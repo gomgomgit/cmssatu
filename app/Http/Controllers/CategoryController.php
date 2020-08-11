@@ -14,7 +14,8 @@ class CategoryController extends Controller
 
     public function index()
     {
-        return view('admin.categories.index');
+        $datas['datas'] = $this->model->all();
+        return view('admin.categories.index', $datas);
     }
 
     public function create()
@@ -25,6 +26,6 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->model->create($request->all());
-        return view('admin.categories.create');
+        return view('admin.categories.index');
     }
 }
