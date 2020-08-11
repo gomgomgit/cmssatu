@@ -33,7 +33,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
             return view('welcome');
         })->name('index');
         Route::get('/create', function () {
-            return view('welcome');
+            return view('admin.categories.create');
         })->name('create');
     });
 
