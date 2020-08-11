@@ -1,5 +1,7 @@
 <?php
 
+use App\Model\Category;
+use Faker\Factory;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -11,6 +13,14 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        Category::truncate();
+
+        $faker = Factory::create('id_ID');
+
+        for ($i = 0; $i < 50; $i++) {
+            Category::create([
+                'name' => $faker->word,
+            ]);
+        }
     }
 }
