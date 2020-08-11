@@ -29,8 +29,16 @@
                             <tr>
                                 <td>{{ $data->name }}</td>
                                 <td>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="more-vertical"></i></button>
-                                    <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
+                                    <a href="{{ route('admin.categories.edit', $data->id) }}">
+                                        <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit-3"></i></button>
+                                    </a>
+
+                                    <form class="d-inline-block" method="post" action="{{ route('admin.categories.delete', $data->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
+                                    </form>
+
                                 </td>
                             </tr>
 
@@ -38,6 +46,11 @@
 
                     </tbody>
                 </table>
+
+                <div class="float-right">
+                    {{ $datas->links() }}
+                </div>
+
             </div>
         </div>
     </div>

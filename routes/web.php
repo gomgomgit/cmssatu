@@ -34,8 +34,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::get('/create', 'CategoryController@create')->name('create');
         Route::post('/store', 'CategoryController@store')->name('store');
         Route::get('/edit/{id}', 'CategoryController@edit')->name('edit');
-        Route::put('/update', 'CategoryController@update')->name('update');
-        Route::delete('/update', 'CategoryController@update')->name('update');
+        Route::put('/update/{id}', 'CategoryController@update')->name('update');
+        Route::delete('/delete/{id}', 'CategoryController@delete')->name('delete');
     });
 
     Route::prefix('/users')->name('users.')->group(function () {

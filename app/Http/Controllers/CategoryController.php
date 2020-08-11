@@ -14,8 +14,8 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $datas['datas'] = $this->model->all();
-        return view('admin.categories.index', $datas);
+        $datas = $this->model->paginate(10);
+        return view('admin.categories.index', compact('datas'));
     }
 
     public function create()
@@ -27,5 +27,27 @@ class CategoryController extends Controller
     {
         $this->model->create($request->all());
         return view('admin.categories.index');
+    }
+
+    public function edit($id)
+    {
+        $data = $this->model->find($id);
+
+        return view('admin.categories.edit', compact('data'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $this->model->find($id);
+        $data->name = $request->name;
+        $data->save();
+
+        return redirect('/admin/categories');
+    }
+
+    public function delete($id)
+    {
+        $this->model->find($id)->delete();
+        return redirect('/admin/categories');
     }
 }
