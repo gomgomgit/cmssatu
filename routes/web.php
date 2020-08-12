@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |•••••••••
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::prefix('/admin')->name('admin.')->group(function () {
+
+    Route::get('/login', 'AuthController@login')->name('login');
+    Route::post('/login-process', 'AuthController@loginProcess')->name('loginProcess');
+    Route::get('/register', 'AuthController@register')->name('register');
+    Route::post('/register-process', 'AuthController@registerProcess')->name('registerProcess');
+    Route::post('/logout', 'AuthController@logout')->name('logout');
 
     Route::get('/', 'DashboardController@index')->name('dashboard');
 
@@ -25,8 +28,8 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::get('/create', 'ArticleController@create')->name('create');
         Route::post('/store', 'ArticleController@store')->name('store');
         Route::get('/edit/{id}', 'ArticleController@edit')->name('edit');
-        Route::put('/update', 'ArticleController@update')->name('update');
-        Route::delete('/update', 'ArticleController@update')->name('update');
+        Route::put('/update/{id}', 'ArticleController@update')->name('update');
+        Route::delete('/delete/{id}', 'ArticleController@delete')->name('delete');
     });
 
     Route::prefix('/categories')->name('categories.')->group(function () {
