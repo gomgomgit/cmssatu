@@ -1,25 +1,40 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Category')
+@section('title', 'Article')
+
+@section('head-script')
+<style type="text/css">
+    .contentgap {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 55ch;
+    }
+</style>
+@endsection
 
 @section('body')
     <div class="card shadow mb-4">
 
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">List Category</h6>
+          <h6 class="m-0 font-weight-bold text-primary">List Article</h6>
         </div>
         <div class="card-body">
             <div class="datatable">
                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Content</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Content</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
@@ -27,13 +42,15 @@
                         @foreach($datas as $data)
 
                             <tr>
-                                <td>{{ $data->name }}</td>
+                                <td>{{ $data->title }}</td>
+                                <td>{{ $data->category->name }}</td>
+                                <td class="contentgap">{{ $data->content }}</td>
                                 <td>
-                                    <a href="{{ route('admin.categories.edit', $data->id) }}">
+                                    <a href="{{ route('admin.articles.edit', $data->id) }}">
                                         <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit-3"></i></button>
                                     </a>
 
-                                    <form class="d-inline-block" method="post" action="{{ route('admin.categories.delete', $data->id) }}">
+                                    <form class="d-inline-block" method="post" action="{{ route('admin.articles.delete', $data->id) }}">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>

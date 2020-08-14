@@ -12,13 +12,22 @@
 
             <form method="post" action="{{ route('admin.categories.store') }}">
                 @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 <div class="form-group">
                     <label for="exampleFormControlInput1" class="text-primary">Name</label>
-                    <input class="form-control" id="inputName" type="text" placeholder="Category" name="name">
+                    <input class="form-control" id="inputName" type="text" placeholder="Category" name="name" value="{{ old('name') }}">
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" value="Create Category">
+                    <input type="submit" class="btn btn-primary" value="Create Category">
                 </div>
             </form>
 

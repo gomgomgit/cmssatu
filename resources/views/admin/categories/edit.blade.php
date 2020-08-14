@@ -13,13 +13,22 @@
             <form method="post" action="{{ route('admin.categories.update', $data->id) }}">
                 @csrf
                 @method('PUT')
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 <div class="form-group">
                     <label for="exampleFormControlInput1" class="text-primary">Name</label>
-                    <input class="form-control" id="inputName" type="text" placeholder="Category" name="name" value="{{ $data->name }}">
+                    <input class="form-control" id="inputName" type="text" placeholder="Category" name="name" value="{{ old('name',$data->name) }}">
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" value="Edit Category">
+                    <input type="submit" class="btn btn-primary" value="Edit Category">
                 </div>
             </form>
 

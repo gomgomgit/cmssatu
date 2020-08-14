@@ -47,7 +47,7 @@ $menus = [
     <div class="sidebar-brand-icon rotate-n-15">
       <i class="fas fa-laugh-wink"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+    <div class="sidebar-brand-text mx-3">Sup <sup>?</sup></div>
   </a>
 
 
@@ -60,7 +60,7 @@ $menus = [
   </div>
 
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item">
+  <li class="nav-item {{ Request::routeIs("admin.dashboard") ? 'active':'' }}">
     <a class="nav-link" href="{{ route('admin.dashboard')}}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Dashboard</span></a>
@@ -111,6 +111,18 @@ $menus = [
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
+
+  <div class="sidebar-heading">
+    Home
+  </div>
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('home')}}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Home</span></a>
+  </li>
+
 
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">
