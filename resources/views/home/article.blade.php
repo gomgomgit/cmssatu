@@ -15,7 +15,7 @@
 	</style>
 </head>
 <body>
-	<nav class="bg-gray-800 border-b-4 border-orange-500">
+	<nav class="bg-gray-800 border-b-4 border-orange-500 sticky top-0">
 		<div class="flex items-center justify-between flex-wrap px-32">
 			<div>
 			  <div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -30,8 +30,8 @@
 			</div>
 			<div class="flex w-full block items-center lg:w-auto">
 			    <div class="text-sm lg:flex-grow">
-			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
-			        Docs
+			      <a href="/" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
+			        Home
 			      </a>
 			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
 			        Examples
@@ -44,9 +44,9 @@
 		</div>
 	</nav>
 
-	<div class="bg-gray-800 py-16 px-32">
+	<div class="bg-gray-900 py-16 px-32">
 		<div class="f-pts">
-			<h2 class="font-bold text-5xl text-white">THE COLDEST SUNSET</h2>
+			<h2 class="font-bold text-5xl text-white">{{$article->title}}</h2>
 			<h3 class="font-bold text-gray-500"><a class="text-orange-500" href="/">HOME</a> / THE COLDEST SUNSET</h3>
 		</div>
 
@@ -59,13 +59,8 @@
 					</div>
 				</div>
 
-				<div>
-					<p class="text-gray-500 f-ubuntu">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<div class="text-gray-500 f-ubuntu">
+						{!! $article->content !!}
 				</div>
 			</div>
 

@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Article;
+
 // use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        $articles = Article::paginate(6);
+        $latests = Article::latest()->take(4)->get();
+        return view('home.index', compact('articles', 'latests'));
     }
     public function show($id)
     {
-        return view('home.article');
+        $article = Article::find($id);
+        return view('home.article', compact('article'));
     }
 }

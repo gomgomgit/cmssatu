@@ -17,10 +17,70 @@
 		.f-ubuntu {
 			    font-family: 'Ubuntu', sans-serif;
 		}
+		.owl-theme .owl-nav [class*="owl-"]{
+			background: none;
+			font-size: 40px;
+			transition: transform 0.2s;
+		}
+		.owl-theme .owl-nav [class*="owl-"]:hover {
+			background: none;
+			transform: scale(1.5);
+			transition: transform 0.2s;
+		}
+
+		.owl-prev, .owl-next {
+		    position: absolute;
+		    height: 100px;
+		    color: inherit;
+		    background: transparent;
+		    border: none;
+		    z-index: 40;
+		    top: 270px;
+
+		    i{
+		    	color: white;
+		    	font-size: 5rem;
+		    }
+		}
+
+		.owl-prev {
+		    left: 180px;
+		}
+
+		.owl-next {
+		    right: 180px;
+		}
+		.owl-dots {
+			position: absolute;
+			bottom: 20px;
+			left: 30px;
+			z-index: 50;
+		}
+		.pagination {
+			display: flex;
+			color: #e2e8f0;
+			font-weight: bold;
+			margin: auto;
+		}
+		.page-item:first-child {
+			margin-left: 0px;
+		}
+		.page-item {
+			padding: 10px 20px;
+			background: #2d3748;
+			margin: 5px;
+			border-radius: 5px;
+		}
+		.page-item:hover {
+			background: #ed8936;
+			color: white;
+		}
+
+
 	</style>
 </head>
 <body>
-	<nav class="bg-gray-800 border-b-4 border-orange-500">
+	<nav class="bg-gray-800 border-b-4 border-orange-500 sticky top-0 z-50">
 		<div class="flex items-center justify-between flex-wrap px-32">
 			<div>
 			  <div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -35,8 +95,8 @@
 			</div>
 			<div class="flex w-full block items-center lg:w-auto">
 			    <div class="text-sm lg:flex-grow">
-			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
-			        Docs
+			      <a href="/" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
+			        Home
 			      </a>
 			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
 			        Examples
@@ -49,113 +109,77 @@
 		</div>
 	</nav>
 
-	<div class="h-full px-64 py-12 w-full bg-white border-b-4 border-orange-500 " style="height: 600px;">
-		<div class="slider owl-theme">
-			<div class="item">
-				<div
-				class="h-full w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg);"
-				>
+
+
+	<div class="px-64 py-12 w-full bg-gray-900 border-b-4 border-orange-500 relative">
+
+		<div class="owl-theme top-0 z-10">
+		     <div class="owl-controls">
+		          <div id="customNav" class="owl-nav"></div>
+		     </div>
+		</div>
+
+		<div class="owl-carousel owl-theme">
+			<div class="item w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg); height: 550px;">
 					<div class="px-16 py-32">
 						<h2 class="font-extrabold text-6xl text-gray-200 f-pts">THE LAST DANCE</h2>
 						<h3 class="font-bold text-2xl text-gray-300">CHICAGO BULLS -- 1988</h3>
 					</div>
-				</div>
 			</div>
-			<div class="item">
-				<div
-				class="h-full w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg);"
-				>
+			<div class="item w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg); height: 550px;">
 					<div class="px-16 py-32">
 						<h2 class="font-extrabold text-6xl text-gray-200 f-pts">THE LAST DANCE</h2>
 						<h3 class="font-bold text-2xl text-gray-300">CHICAGO BULLS -- 1988</h3>
 					</div>
-				</div>
+			</div>
+			<div class="item w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg); height: 550px;">
+					<div class="px-16 py-32">
+						<h2 class="font-extrabold text-6xl text-gray-200 f-pts">THE LAST DANCE</h2>
+						<h3 class="font-bold text-2xl text-gray-300">CHICAGO BULLS -- 1988</h3>
+					</div>
+			</div>
+			<div class="item w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg); height: 550px;">
+					<div class="px-16 py-32">
+						<h2 class="font-extrabold text-6xl text-gray-200 f-pts">THE LAST DANCE</h2>
+						<h3 class="font-bold text-2xl text-gray-300">CHICAGO BULLS -- 1988</h3>
+					</div>
 			</div>
 
 		</div>
+
 	</div>
 
-	<div class="px-32 py-16 bg-gray-800">
-		<h3 class="font-bold text-4xl f-ubuntu text-white mb-10 border-b-2 border-gray-700 py-5">Hot news</h3>
+
+
+	<div class="px-32 py-16 bg-gray-900">
+		<h3 class="font-bold text-4xl f-ubuntu text-white mb-10 border-b-2 border-gray-700 py-5">Update</h3>
 
 		<div class="grid grid-cols-4 grid-flow-col gap-4">
-			<div class="">
-				<div class="max-w-sm rounded overflow-hidden shadow-lg">
-					<div class="p-1 border-2 border-gray-700">
-				  		<img class="w-full" src="https://i.insider.com/5ec2038019182438795d88b3?width=1100&format=jpeg&auto=webp" alt="Sunset in the mountains">
+			@foreach($latests as $latest)
+				<div class="">
+					<div class="max-w-sm rounded overflow-hidden shadow-lg">
+						<div class="p-1 border-2 border-gray-700">
+					  		<img class="w-full" src="https://i.insider.com/5ec2038019182438795d88b3?width=1100&format=jpeg&auto=webp" alt="Sunset in the mountains">
 
+						</div>
+					  <div class="px-6 py-4">
+					    <div class="font-bold text-2xl mb-2 text-orange-500 hover:text-white cursor-pointer inline-block">
+					    	<a href="/article/{{ $latest->id }}">{{ $latest->title }}</a>
+						</div>
+					    <p class="text-gray-100 text-base">
+					      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+					    </p>
+					  </div>
+					  <div class="px-6 py-4">
+					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#photography</span>
+					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#travel</span>
+					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100">#winter</span>
+					  </div>
 					</div>
-				  <div class="px-6 py-4">
-				    <div class="font-bold text-2xl mb-2 text-orange-500 hover:text-white cursor-pointer inline-block"><a href="/article/1">The Coldest Sunset</a></div>
-				    <p class="text-gray-100 text-base">
-				      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-				    </p>
-				  </div>
-				  <div class="px-6 py-4">
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#photography</span>
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#travel</span>
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100">#winter</span>
-				  </div>
 				</div>
-			</div>
-			<div class="">
-				<div class="max-w-sm rounded overflow-hidden shadow-lg">
-					<div class="p-1 border-2 border-gray-700">
-				  		<img class="w-full" src="https://i.insider.com/5ec2038019182438795d88b3?width=1100&format=jpeg&auto=webp" alt="Sunset in the mountains">
 
-					</div>
-				  <div class="px-6 py-4">
-				    <div class="font-bold text-2xl mb-2 text-orange-500 hover:text-white cursor-pointer inline-block"><a href="/article/1">The Coldest Sunset</a></div>
-				    <p class="text-gray-100 text-base">
-				      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-				    </p>
-				  </div>
-				  <div class="px-6 py-4">
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#photography</span>
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#travel</span>
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100">#winter</span>
-				  </div>
-				</div>
-			</div>
-			<div class="">
-				<div class="max-w-sm rounded overflow-hidden shadow-lg">
-					<div class="p-1 border-2 border-gray-700">
-				  		<img class="w-full" src="https://i.insider.com/5ec2038019182438795d88b3?width=1100&format=jpeg&auto=webp" alt="Sunset in the mountains">
-
-					</div>
-				  <div class="px-6 py-4">
-				    <div class="font-bold text-2xl mb-2 text-orange-500 hover:text-white cursor-pointer inline-block"><a href="/article/1">The Coldest Sunset</a></div>
-				    <p class="text-gray-100 text-base">
-				      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-				    </p>
-				  </div>
-				  <div class="px-6 py-4">
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#photography</span>
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#travel</span>
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100">#winter</span>
-				  </div>
-				</div>
-			</div>
-			<div class="">
-				<div class="max-w-sm rounded overflow-hidden shadow-lg">
-					<div class="p-1 border-2 border-gray-700">
-				  		<img class="w-full" src="https://i.insider.com/5ec2038019182438795d88b3?width=1100&format=jpeg&auto=webp" alt="Sunset in the mountains">
-
-					</div>
-				  <div class="px-6 py-4">
-				    <div class="font-bold text-2xl mb-2 text-orange-500 hover:text-white cursor-pointer inline-block"><a href="/article/1">The Coldest Sunset</a></div>
-				    <p class="text-gray-100 text-base">
-				      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-				    </p>
-				  </div>
-				  <div class="px-6 py-4">
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#photography</span>
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#travel</span>
-				    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100">#winter</span>
-				  </div>
-				</div>
-			</div>
-			</div>
+			@endforeach
+		</div>
 
 
 		<div class="grid grid-cols-4 gap-4">
@@ -163,34 +187,38 @@
 				<div class="">
 					<h3 class="font-bold text-4xl f-ubuntu text-white  mb-10 border-b-2 border-gray-700 py-5">For You</h3>
 
-					<div class="grid grid-cols-1 gap-3">
-						<div class="max-w-sm w-full lg:max-w-full lg:flex">
-							<div class="h-48 lg:h-auto w-48 flex-none rounded border-2 border-gray-700 text-center overflow-hidden p-1">
-							  <div class="h-full w-full bg-cover" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/ae/Michael_Jordan_in_2014.jpg')" title="Woman holding a mug">
+					<div class="grid grid-cols-1 gap-6">
+
+						@foreach($articles as $article)
+
+							<div class="max-w-sm w-full lg:max-w-full lg:flex border-b-2 border-gray-700 py-1">
+							  <div class="h-48 lg:h-auto w-48 flex-none rounded bg-cover" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/ae/Michael_Jordan_in_2014.jpg')">
 							  </div>
-
+							  <div class="bg-transparent rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+							    <div class="mb-8">
+							      <p class="text-sm text-gray-500 flex items-center">
+							        Members only
+							      </p>
+							      <div class="text-gray-200 font-bold text-2xl mb-2 text-orange-500 hover:text-white inline-block cursor-pointer">
+							      	<a href="/article/{{ $article->id }}">{{ $article->title }}</a>
+							      </div>
+							      <span class="text-gray-200 text-base text-white">{!! $article->content !!}</span>
+							    </div>
+							    <div class="flex items-center">
+							      <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg">
+							      <div class="text-sm">
+							        <p class="text-gray-500 leading-none">{{ $article->user->name }}</p>
+							        <p class="text-gray-600">{{ $article->created_at }}</p>
+							      </div>
+							    </div>
+							  </div>
 							</div>
-						  <div class="bg-transparent rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-						    <div class="mb-8">
-						      <p class="text-sm text-gray-600 flex items-center">
-						        <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-						          <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
-						        </svg>
-						        Members only
-						      </p>
-						      <div class="text-gray-900 font-bold text-xl mb-2">Can coffee make you a better developer?</div>
-						      <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-						    </div>
-						    <div class="flex items-center">
-						      <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg">
-						      <div class="text-sm">
-						        <p class="text-gray-900 leading-none">Jonathan Reinink</p>
-						        <p class="text-gray-600">Aug 18</p>
-						      </div>
-						    </div>
-						  </div>
-						</div>
 
+						@endforeach
+
+						<div class="float-right text-white">
+							{{ $articles->links() }}
+						</div>
 					</div>
 
 
@@ -219,23 +247,22 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js" integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg==" crossorigin="anonymous"></script>
+
+
 	<script type="text/javascript">
 		$(document).ready(function(){
-		  $(".slider").owlCarousel({
-		  	loop:true,
-		  	    margin:10,
-		  	    nav:true,
-		  	    responsive:{
-		  	        0:{
-		  	            items:1
-		  	        },
-		  	        600:{
-		  	            items:3
-		  	        },
-		  	        1000:{
-		  	            items:5
-		  	        }
-		  	    }
+		  $(".owl-carousel").owlCarousel({
+		  	items:1,
+		  	loop: true,
+		  	nav: true,
+     		navContainer: '#customNav',
+		    navText: [
+		        '<i class="fas fa-angle-left" aria-hidden="true"></i>',
+		        '<i class="fas fa-angle-right" aria-hidden="true"></i>'
+		    ],
 		  });
 		});
 	</script>
