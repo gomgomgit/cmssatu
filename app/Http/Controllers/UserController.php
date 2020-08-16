@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Category;
+use App\Model\User;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->model = new Category();
-        $this->view = 'admin.categories.';
-        $this->redirect = '/admin/categories';
+        $this->model = new User();
+        $this->view = 'admin.users.';
+        $this->redirect = '/admin/users';
     }
 
     public function index()
@@ -23,28 +23,18 @@ class CategoryController extends Controller
         return view($this->view . 'index', compact('datas'));
     }
 
-    public function create()
+    public function show($id)
     {
-        $this->authorize('create', $this->model);
 
-        return view($this->view . 'create');
-    }
+        $data = $this->model->find($id);
 
-    public function store(Request $request)
-    {
-        $this->authorize('create', $this->model);
+        $this->authorize('view', $this->model);
 
-        $request->validate([
-            'name' => 'required|unique:categories,name',
-        ]);
-        $this->model->create($request->all());
-        return redirect($this->redirect . '/index');
+        return view($this->view . 'show', compact('data'));
     }
 
     public function edit($id)
     {
-        $this->authorize('update', $this->model);
-
         $data = $this->model->find($id);
 
         return view($this->view . 'edit', compact('data'));
@@ -52,11 +42,16 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->authorize('update', $this->model);
-
         $request->validate([
-            'name' => 'required|unique:categories,name,' . $id,
+            'name' => 'required',
+            'email' => 'required|unique:users,name,' . $id,
+            'password' => 'required',
         ]);
+
+        $request->merge([
+            'password' => $encrypted,
+        ]);
+
         $data = $this->model->find($id);
         $data->name = $request->name;
         $data->save();
@@ -66,8 +61,6 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        $this->authorize('delete', $this->model);
-
         $this->model->find($id)->delete();
         return redirect($this->redirect);
     }

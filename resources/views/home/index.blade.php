@@ -80,7 +80,7 @@
 	</style>
 </head>
 <body>
-	<nav class="bg-gray-800 border-b-4 border-orange-500 sticky top-0 z-50">
+	<nav class="bg-gray-800 border-b-4 border-orange-500 z-50">
 		<div class="flex items-center justify-between flex-wrap px-32">
 			<div>
 			  <div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -156,8 +156,7 @@
 
 		<div class="grid grid-cols-4 grid-flow-col gap-4">
 			@foreach($latests as $latest)
-				<div class="">
-					<div class="max-w-sm rounded overflow-hidden shadow-lg">
+					<div class="max-w-sm rounded overflow-hidden shadow-lg" style="background: #1b212e">
 						<div class="p-1 border-2 border-gray-700">
 					  		<img class="w-full" src="https://i.insider.com/5ec2038019182438795d88b3?width=1100&format=jpeg&auto=webp" alt="Sunset in the mountains">
 
@@ -171,12 +170,11 @@
 					    </p>
 					  </div>
 					  <div class="px-6 py-4">
-					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#photography</span>
-					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mr-2">#travel</span>
-					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100">#winter</span>
+					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mt-2 mr-2">#photography</span>
+					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mt-2 mr-2">#travel</span>
+					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mt-2">#winter</span>
 					  </div>
 					</div>
-				</div>
 
 			@endforeach
 		</div>
@@ -227,15 +225,13 @@
 
 			<div class="col-span-1 mt-12">
 				<div class="sticky top-0">
-					<h4 class="font-bold text-4xl f-ubuntu text-white  mb-10 border-b-2 border-gray-700 py-5">Top Category</h4>
-					<div class="w-full bg-white p-5 f-ubuntu rounded">
-						<ul class="list-disc list-inside font-bold">
-							<li>Sport</li>
-							<li>Sport</li>
-							<li>Sport</li>
-							<li>Sport</li>
-							<li>Sport</li>
-							<li>Sport</li>
+					<h4 class="font-bold text-4xl f-pts text-white  mb-10 border-b-2 border-gray-700 py-5">Top Category</h4>
+					<div class="w-full p-5 f-ubuntu rounded border-2 border-gray-700">
+						<ul class="list-disc list-inside text-gray-100 text-xl">
+
+							@foreach($categories as $category)
+								<li class="my-3 cursor-pointer">{{ $category->name }}</li>
+							@endforeach
 						</ul>
 					</div>
 				</div>

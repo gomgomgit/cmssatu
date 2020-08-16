@@ -1,12 +1,12 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Category')
+@section('title', 'User')
 
 @section('body')
     <div class="card shadow mb-4">
 
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">List Category</h6>
+          <h6 class="m-0 font-weight-bold text-primary">List User</h6>
         </div>
         <div class="card-body">
             <div class="datatable">
@@ -14,14 +14,16 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Article</th>
+                            <th>Email</th>
+                            <th>Role</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>Name</th>
-                            <th>Article</th>
+                            <th>Email</th>
+                            <th>Role</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
@@ -30,13 +32,14 @@
 
                             <tr>
                                 <td>{{ $data->name }}</td>
-                                <td>{{ $data->articles()->count() }}</td>
+                                <td>{{ $data->email }}</td>
+                                <td>{{ $data->role }}</td>
                                 <td>
-                                    <a href="{{ route('admin.categories.edit', $data->id) }}">
+                                    <a href="{{ route('admin.users.edit', $data->id) }}">
                                         <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit-3"></i></button>
                                     </a>
 
-                                    <form class="d-inline-block" method="post" action="{{ route('admin.categories.delete', $data->id) }}">
+                                    <form class="d-inline-block" method="post" action="{{ route('admin.users.delete', $data->id) }}">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>

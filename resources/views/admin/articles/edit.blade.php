@@ -13,8 +13,9 @@
         </div>
         <div class="card-body">
 
-            <form method="post" action="{{ route('admin.articles.store') }}">
+            <form method="post" action="{{ route('admin.articles.update', $data->id) }}" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -39,11 +40,17 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="" class="text-primary">Content</label>
                     <textarea class="ckeditor form-control" name="content">{{ old('content',$data->content) }}</textarea>
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Create Article">
+                    <label for="inputImage" class="text-primary">Post Article Image</label>
+                    <input class="d-block" id="inputImage" type="file" placeholder="Title" name="image_file">
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Edit Article">
                 </div>
             </form>
 
@@ -52,7 +59,7 @@
 @endsection
 
 @section('end-script')
-<script src="//cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.14.1/full/ckeditor.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('.ckeditor').ckeditor();

@@ -41,6 +41,17 @@
                   </div>
                   <form class="user" action="{{ route('admin.loginProcess') }}" method="post">
                     @csrf
+
+                    @if($errors->any())
+                    <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" value="{{ old('email') }}">
                     </div>

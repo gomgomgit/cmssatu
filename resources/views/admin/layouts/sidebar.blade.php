@@ -4,6 +4,7 @@ $menus = [
         'title' => 'Articles',
         'route' => 'admin.articles',
         'icon' => 'fa-book',
+        'model' => App\Model\Article::class,
         'children' => [
             [
                 'title' => 'Article List',
@@ -20,6 +21,7 @@ $menus = [
         'title' => 'Categories',
         'route' => 'admin.categories',
         'icon' => 'fa-book',
+        'model' => App\Model\Category::class,
         'children' => [
             [
                 'title' => 'Category List',
@@ -36,6 +38,7 @@ $menus = [
         'title' => 'Users',
         'route' => 'admin.users.index',
         'icon' => 'fa-user',
+        'model' => App\Model\User::class,
     ],
 
 ];
@@ -77,35 +80,40 @@ $menus = [
 
   @foreach($menus as $index => $menu)
 
-    @if(isset($menu['children']))
+    @can('viewAny', $menu['model'])
 
-      <li class="nav-item {{ Request::routeIs("$menu[route]*") ? 'active':'' }}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse{{ $index }}" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw {{ $menu['icon'] }}"></i>
-          <span>{{ $menu['title'] }}</span>
-        </a>
-        <div id="collapse{{ $index }}" class="collapse {{ Request::routeIs("$menu[route]*") ? 'show':'' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Menu {{ $menu['title'] }}:</h6>
+      @if(isset($menu['children']))
 
-              @foreach($menu['children'] as $children)
-                <a class="collapse-item {{ Request::routeIs("$children[route]") ? 'active':'' }}" href="{{route($children['route']) }}">{{ $children['title'] }}</a>
-              @endforeach
+        <li class="nav-item {{ Request::routeIs("$menu[route]*") ? 'active':'' }}">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse{{ $index }}" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw {{ $menu['icon'] }}"></i>
+            <span>{{ $menu['title'] }}</span>
+          </a>
+          <div id="collapse{{ $index }}" class="collapse {{ Request::routeIs("$menu[route]*") ? 'show':'' }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Menu {{ $menu['title'] }}:</h6>
+
+                @foreach($menu['children'] as $children)
+                  <a class="collapse-item {{ Request::routeIs("$children[route]") ? 'active':'' }}" href="{{route($children['route']) }}">{{ $children['title'] }}</a>
+                @endforeach
 
 
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
 
-    @else
+      @else
 
-      <li class="nav-item  {{ Request::routeIs("$menu[route]*") ? 'active':'' }}">
-        <a class="nav-link" href="{{ route($menu['route']) }}">
-          <i class="fas fa-fw {{ $menu['icon'] }}"></i>
-          <span>{{ $menu['title'] }}</span></a>
-      </li>
+        <li class="nav-item  {{ Request::routeIs("$menu[route]*") ? 'active':'' }}">
+          <a class="nav-link" href="{{ route($menu['route']) }}">
+            <i class="fas fa-fw {{ $menu['icon'] }}"></i>
+            <span>{{ $menu['title'] }}</span></a>
+        </li>
 
-    @endif
+      @endif
+
+    @endcan
+
 
   @endforeach
 

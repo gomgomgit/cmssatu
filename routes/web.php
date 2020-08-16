@@ -46,8 +46,9 @@ Route::prefix('/admin')->name('admin.')->group(function () {
 
     Route::prefix('/users')->name('users.')->group(function () {
         Route::get('/', 'UserController@index')->name('index');
-        Route::get('/create', function () {
-            return view('welcome');
-        })->name('create');
+        Route::get('/show/{id}', 'UserController@show')->name('show');
+        Route::get('/edit/{id}', 'UserController@edit')->name('edit');
+        Route::get('/update/{id}', 'UserController@update')->name('update');
+        Route::get('/delete/{id}', 'UserController@delete')->name('delete');
     });
 });

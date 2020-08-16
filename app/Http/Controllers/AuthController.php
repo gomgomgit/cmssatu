@@ -32,7 +32,7 @@ class AuthController extends Controller
         if ($isSucess) {
             return redirect()->intended('/admin');
         } else {
-            // return redirect()->back();
+            return redirect()->back();
         }
     }
 
@@ -53,6 +53,7 @@ class AuthController extends Controller
 
         $request->merge([
             'password' => $encrypted,
+            'role' => 'author',
         ]);
 
         User::create($request->all());

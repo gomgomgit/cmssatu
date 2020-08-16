@@ -26,7 +26,9 @@
                         <tr>
                             <th>Title</th>
                             <th>Category</th>
+                            <th>Author</th>
                             <th>Content</th>
+                            <th>Image</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -34,30 +36,37 @@
                         <tr>
                             <th>Title</th>
                             <th>Category</th>
+                            <th>Author</th>
                             <th>Content</th>
+                            <th>Image</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         @foreach($datas as $data)
 
-                            <tr>
-                                <td>{{ $data->title }}</td>
-                                <td>{{ $data->category->name }}</td>
-                                <td class="contentgap">{{ $data->content }}</td>
-                                <td>
-                                    <a href="{{ route('admin.articles.edit', $data->id) }}">
-                                        <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit-3"></i></button>
-                                    </a>
+                            {{-- @can('view', App\Model\Article::find($data->id)) --}}
+                                <tr>
+                                    <td>{{ $data->title }}</td>
+                                    <td>{{ $data->category->name }}</td>
+                                    <td>{{ $data->user->name }}</td>
+                                    <td class="contentgap">{{ $data->content }}</td>
+                                    <td><img src="/img/{{ $data->image }}"></td>
+                                    <td>
+                                        <a href="{{ route('admin.articles.edit', $data->id) }}">
+                                            <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit-3"></i></button>
+                                        </a>
 
-                                    <form class="d-inline-block" method="post" action="{{ route('admin.articles.delete', $data->id) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
-                                    </form>
+                                        <form class="d-inline-block" method="post" action="{{ route('admin.articles.delete', $data->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-datatable btn-icon btn-transparent-dark"><i data-feather="trash-2"></i></button>
+                                        </form>
 
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            {{-- @endcan --}}
+
 
                         @endforeach
 
