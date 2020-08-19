@@ -2,6 +2,7 @@
 
 use App\Model\Article;
 use App\Model\Category;
+use App\Model\Tag;
 use Carbon\Carbon;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
@@ -18,6 +19,7 @@ class ArticleSeeder extends Seeder
     public function run()
     {
         Article::truncate();
+        // DB::table('article_tag')->truncate();
 
         $faker = Factory::create('id_ID');
         $category = Category::pluck('id');
@@ -33,7 +35,7 @@ class ArticleSeeder extends Seeder
             // ]);
 
             $now = Carbon::now();
-            DB::table('articles')->insert([
+            $articleId = DB::table('articles')->insertGetId([
                 'title' => $i . $title,
                 'category_id' => $faker->randomElement($category),
                 'content' => '<p>' . $faker->text(330) . '</p>',
@@ -43,7 +45,11 @@ class ArticleSeeder extends Seeder
                 'created_at' => $now->subMinutes($i),
             ]);
 
-            DB::table('article_tag')->truncate();
+            $article = Article::find($articleId);
+            $tagsId = Tag::pluck('id')->toArray();
+            $tags = array_rand($tagsId, 5);
+            $article->tags()->sync($tags);
+
         }
     }
 }

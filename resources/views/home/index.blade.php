@@ -82,6 +82,14 @@
 			color: white;
 		}*/
 
+		.content-article {
+			/*white-space: nowrap;*/
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 100ch;
+			word-wrap: break-word;
+		}
+
 
 	</style>
 </head>
@@ -168,9 +176,12 @@
 					    </p>
 					  </div>
 					  <div class="px-6 py-4">
-					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mt-2 mr-2">#photography</span>
-					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mt-2 mr-2">#travel</span>
-					    <span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mt-2">#winter</span>
+					  	<p class="text-white">tags:</p>
+					  	@foreach($latest->tags as $tag)
+
+					    	<span class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-100 mt-2 mr-2">{{ $tag->name }}</span>
+
+					  	@endforeach
 					  </div>
 					</div>
 
@@ -191,19 +202,28 @@
 							  <div class="h-48 w-56 flex-none rounded bg-cover" style="background-image: url('/img/{{ $article->image }}')">
 							  </div>
 							  <div class="bg-transparent rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-							    <div class="mb-8">
+							    <div class="mb-4">
 							      <p class="text-sm text-gray-400 flex items-center">
 							        {{ $article->category->name }}
 							      </p>
 							      <div class="text-gray-200 font-bold text-2xl mb-2 text-orange-500 hover:text-white inline-block cursor-pointer">
 							      	<a href="/article/{{ $article->slug }}">{{ $article->title }}</a>
 							      </div>
-							      <span class="text-gray-200 text-base text-white">{!! $article->content !!}</span>
+
+							      <div style="">
+							      	<span class="text-gray-200 text-base text-white content-article">{!! $article->content !!}</span>
+							      </div>
+
 							    </div>
+						    	<div class="text-gray-400 mb-4"><i class="fas fa-tag mr-2"></i>
+						    		@foreach($article->tags as $tag)
+						    			<span class="text-sm">{{ $tag->name }}, </span>
+						    		@endforeach
+						    	</div>
 							    <div class="flex items-center">
 							      <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg">
 							      <div class="text-sm">
-							        <p class="text-gray-400 leading-none">{{ $article->user->name }}</p>
+							        <p class="text-gray-300 leading-none">{{ $article->user->name }}</p>
 							        <p class="text-gray-500">{{ $article->created_at }}</p>
 							      </div>
 							    </div>

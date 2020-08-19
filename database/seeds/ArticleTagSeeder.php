@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+
+// use Illuminate\Support\Facades\DB;
 
 class ArticleTagSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class ArticleTagSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('article_tag')->truncate();
+        // DB::table('article_tag')->truncate();
     }
 }

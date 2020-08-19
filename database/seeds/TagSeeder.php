@@ -16,7 +16,7 @@ class TagSeeder extends Seeder
         Tag::truncate();
 
         $faker = Factory::create('id_ID');
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             Tag::create([
                 'name' => $faker->unique()->word,
             ]);
