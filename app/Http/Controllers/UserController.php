@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -28,7 +29,7 @@ class UserController extends Controller
 
         $data = $this->model->find($id);
 
-        $this->authorize('view', $this->model);
+        $this->authorize('view', $data);
 
         return view($this->view . 'show', compact('data'));
     }
@@ -37,11 +38,17 @@ class UserController extends Controller
     {
         $data = $this->model->find($id);
 
+        $this->authorize('update', $data);
+
         return view($this->view . 'edit', compact('data'));
     }
 
     public function update(Request $request, $id)
     {
+        $data = $this->model->find($id);
+
+        $this->authorize('update', $data);
+
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users,name,' . $id,
@@ -52,7 +59,6 @@ class UserController extends Controller
             'password' => $encrypted,
         ]);
 
-        $data = $this->model->find($id);
         $data->name = $request->name;
         $data->save();
 
@@ -61,7 +67,19 @@ class UserController extends Controller
 
     public function delete($id)
     {
-        $this->model->find($id)->delete();
-        return redirect($this->redirect);
+        $data = $this->model->find($id);
+
+        $this->authorize('delete', $data);
+
+        Auth::logout();
+
+        $data->delete();
+
+        if (Auth::user()->role == 'admin') {
+            return redirect($this->redirect);
+        } else {
+            return redirect('/admin/login');
+        }
+
     }
 }

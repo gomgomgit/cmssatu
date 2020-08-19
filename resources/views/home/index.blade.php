@@ -56,6 +56,12 @@
 			left: 30px;
 			z-index: 50;
 		}
+		.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+			background-color: white;
+		}
+		.owl-theme .owl-dots .owl-dot span{
+			background-color: #999999;
+		}
 		/*.pagination {
 			display: flex;
 			color: #e2e8f0;

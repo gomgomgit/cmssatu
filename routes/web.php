@@ -50,7 +50,7 @@ Route::prefix('/admin')->name('admin.')->group(function () {
         Route::get('/', 'UserController@index')->name('index');
         Route::get('/show/{id}', 'UserController@show')->name('show');
         Route::get('/edit/{id}', 'UserController@edit')->name('edit');
-        Route::get('/update/{id}', 'UserController@update')->name('update');
-        Route::get('/delete/{id}', 'UserController@delete')->name('delete');
+        Route::put('/update/{id}', 'UserController@update')->name('update');
+        Route::delete('/delete/{id}', 'UserController@delete')->name('delete');
     });
 });

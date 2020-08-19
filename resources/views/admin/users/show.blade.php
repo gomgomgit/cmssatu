@@ -20,8 +20,16 @@
 
 	    <div class="card shadow mb-4">
 
-	      <div class="card-header py-3">
-	        <h6 class="m-0 font-weight-bold text-primary">My Profile</h6>
+	      <div class="card-header py-3 d-flex justify-content-between">
+	      	<div>
+	        	<h6 class="m-0 font-weight-bold text-primary my-auto">My Profile</h6>
+	      	</div>
+	      	<div>
+		        <a class="" href="{{ route('admin.users.edit', $data->id) }}">
+		            <button class="btn btn-outline-primary btn-icon btn-transparent-dark mr-2"><span class="font-weight-bold">Edit Your Profile </span></button>
+		        </a>
+	      	</div>
+
 	      </div>
 	      <div class="card-body">
 
@@ -36,6 +44,15 @@
 	        </div>
 
 	        <hr>
+
+	        <form method="post" action="{{ route('admin.users.delete', $data->id) }}">
+	        	@csrf
+	        	@method('DELETE')
+	        	<button class="btn btn-outline-danger">
+	        		Delete your account
+	        	</button>
+	        </form>
+
 	      </div>
 
 	    </div>

@@ -29,11 +29,11 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return true;
+        return $user->id == $model->id || $user->role == 'admin';
     }
     public function update(User $user, User $model)
     {
-        //
+        return $user->id == $model->id || $user->role == 'admin';
     }
 
     /**
@@ -45,6 +45,6 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        //
+        return $user->id == $model->id || $user->role == 'admin';
     }
 }

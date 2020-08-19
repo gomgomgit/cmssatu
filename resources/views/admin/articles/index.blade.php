@@ -54,10 +54,10 @@
                                     <td>{{ $data->user->name }}</td>
                                     <td class="contentgap">{{ $data->content }}</td>
                                     <td>
-                                        {{ $data->tags()->count() }}
-                                        {{-- @foreach($data->tags() as $tag)
-                                            <span>{{ $tag }}</span>
-                                        @endforeach --}}
+                                        {{-- {{ $data->tags()->count() }} --}}
+                                        @foreach($data->tags as $tag)
+                                            <span>{{ $tag->name }},</span>
+                                        @endforeach
                                     </td>
                                     <td><img class="" style="width: 40px;" src="/img/{{ $data->image }}"></td>
                                     <td>

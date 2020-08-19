@@ -35,6 +35,10 @@
                                 <td>{{ $data->email }}</td>
                                 <td>{{ $data->role }}</td>
                                 <td>
+                                    <a href="{{ route('admin.users.show', $data->id) }}">
+                                        <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="user"></i></button>
+                                    </a>
+
                                     <a href="{{ route('admin.users.edit', $data->id) }}">
                                         <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit-3"></i></button>
                                     </a>

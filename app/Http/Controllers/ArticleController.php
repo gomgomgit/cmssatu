@@ -37,6 +37,8 @@ class ArticleController extends Controller
 
     public function create()
     {
+        $this->authorize('create', $this->model);
+
         $categories = Category::all();
         $tags = Tag::all();
         return view($this->view . 'create', compact('categories', 'tags'));
@@ -44,6 +46,8 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('create', $this->model);
+
         if ($request->image_file) {
             $request = $this->uploadImage($request);
         }
@@ -98,6 +102,7 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $data = $this->model->find($id);
+        $this->authorize('update', $data);
 
         if ($request->image_file) {
             $this->removeImage($data->image);
@@ -140,6 +145,8 @@ class ArticleController extends Controller
     public function delete($id)
     {
         $model = $this->model->find($id);
+
+        $this->authorize('delete', $model);
 
         $this->removeImage($model->image);
 
