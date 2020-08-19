@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     protected $fillable = [
-        'title', 'user_id', 'category_id', 'content', 'image',
+        'title', 'user_id', 'category_id', 'content', 'image', 'slug', 'counter',
     ];
     public function category()
     {
@@ -16,5 +16,13 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo('App\Model\User');
+    }
+    public function comments()
+    {
+        return $this->hasMany('App\Model\Comment');
+    }
+    public function tags()
+    {
+        return $this->belongsToMany('App\Model\Tag');
     }
 }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Article;
-use App\Model\Category;
+// use App\Model\Article;
+// use App\Model\Category;
+// use App\Model\User;
 
 class DashboardController extends Controller
 {
@@ -13,11 +14,12 @@ class DashboardController extends Controller
     }
     public function index()
     {
-        $datas = [
-            'Article' => Article::count(),
-            'Category' => Category::count(),
-        ];
+        // $datas = [
+        //     'User' => User::count(),
+        //     'Article' => Article::count(),
+        //     'Category' => Category::count(),
+        // ];
 
-        return view('admin.dashboard.index', compact('datas'));
+        return view('admin.dashboard.index');
     }
 }

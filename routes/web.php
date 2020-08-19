@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/article/{id}', 'HomeController@show')->name('article');
+Route::get('/article/{slug}', 'HomeController@show')->name('article');
+
+Route::post('/article/comment/{id}', 'CommentController@postComment')->name('postComment');
 
 Route::prefix('/admin')->name('admin.')->group(function () {
 

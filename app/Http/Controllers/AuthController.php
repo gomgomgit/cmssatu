@@ -30,9 +30,9 @@ class AuthController extends Controller
         $isSucess = Auth::attempt($credentials);
 
         if ($isSucess) {
-            return redirect()->intended('/admin');
+            return redirect()->intended('/admin/');
         } else {
-            return redirect()->back();
+            return redirect()->back()->withInput($request->except('password'))->with(['error' => 'Wrong password or this account not register yet.']);
         }
     }
 

@@ -56,7 +56,7 @@
 			left: 30px;
 			z-index: 50;
 		}
-		.pagination {
+		/*.pagination {
 			display: flex;
 			color: #e2e8f0;
 			font-weight: bold;
@@ -74,7 +74,7 @@
 		.page-item:hover {
 			background: #ed8936;
 			color: white;
-		}
+		}*/
 
 
 	</style>
@@ -120,24 +120,16 @@
 		</div>
 
 		<div class="owl-carousel owl-theme">
-			<div class="item w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg); height: 550px;">
-					<div class="px-16 py-32">
-						<h2 class="font-extrabold text-6xl text-gray-200 f-pts">THE LAST DANCE</h2>
-						<h3 class="font-bold text-2xl text-gray-300">CHICAGO BULLS -- 1988</h3>
-					</div>
-			</div>
-			<div class="item w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg); height: 550px;">
-					<div class="px-16 py-32">
-						<h2 class="font-extrabold text-6xl text-gray-200 f-pts">THE LAST DANCE</h2>
-						<h3 class="font-bold text-2xl text-gray-300">CHICAGO BULLS -- 1988</h3>
-					</div>
-			</div>
-			<div class="item w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg); height: 550px;">
-					<div class="px-16 py-32">
-						<h2 class="font-extrabold text-6xl text-gray-200 f-pts">THE LAST DANCE</h2>
-						<h3 class="font-bold text-2xl text-gray-300">CHICAGO BULLS -- 1988</h3>
-					</div>
-			</div>
+
+			@foreach($populars as $popular)
+				<div class="item w-full bg-cover" style="background-image: url(/img/{{ $popular->image }}); height: 550px;">
+						<div class="pl-16 py-16 pr-32">
+							<h2 class="font-extrabold text-6xl text-gray-200 f-pts">{{ $popular->title }}</h2>
+							<h3 class="font-bold text-2xl text-gray-300">{{ $popular->category->name }}</h3>
+						</div>
+				</div>
+			@endforeach
+
 			<div class="item w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg); height: 550px;">
 					<div class="px-16 py-32">
 						<h2 class="font-extrabold text-6xl text-gray-200 f-pts">THE LAST DANCE</h2>
@@ -157,13 +149,13 @@
 		<div class="grid grid-cols-4 grid-flow-col gap-4">
 			@foreach($latests as $latest)
 					<div class="max-w-sm rounded overflow-hidden shadow-lg" style="background: #1b212e">
-						<div class="p-1 border-2 border-gray-700">
-					  		<img class="w-full" src="https://i.insider.com/5ec2038019182438795d88b3?width=1100&format=jpeg&auto=webp" alt="Sunset in the mountains">
+						<div class="p-1 border-2 border-gray-700 h-64">
+					  		<img class="w-full h-full" src="/img/{{ $latest->image }}" alt="{{ $latest->title }}">
 
 						</div>
 					  <div class="px-6 py-4">
 					    <div class="font-bold text-2xl mb-2 text-orange-500 hover:text-white cursor-pointer inline-block">
-					    	<a href="/article/{{ $latest->id }}">{{ $latest->title }}</a>
+					    	<a href="/article/{{ $latest->slug }}">{{ $latest->title }}</a>
 						</div>
 					    <p class="text-gray-100 text-base">
 					      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
@@ -190,23 +182,23 @@
 						@foreach($articles as $article)
 
 							<div class="max-w-sm w-full lg:max-w-full lg:flex border-b-2 border-gray-700 py-1">
-							  <div class="h-48 lg:h-auto w-48 flex-none rounded bg-cover" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/ae/Michael_Jordan_in_2014.jpg')">
+							  <div class="h-48 w-56 flex-none rounded bg-cover" style="background-image: url('/img/{{ $article->image }}')">
 							  </div>
 							  <div class="bg-transparent rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
 							    <div class="mb-8">
-							      <p class="text-sm text-gray-500 flex items-center">
-							        Members only
+							      <p class="text-sm text-gray-400 flex items-center">
+							        {{ $article->category->name }}
 							      </p>
 							      <div class="text-gray-200 font-bold text-2xl mb-2 text-orange-500 hover:text-white inline-block cursor-pointer">
-							      	<a href="/article/{{ $article->id }}">{{ $article->title }}</a>
+							      	<a href="/article/{{ $article->slug }}">{{ $article->title }}</a>
 							      </div>
 							      <span class="text-gray-200 text-base text-white">{!! $article->content !!}</span>
 							    </div>
 							    <div class="flex items-center">
 							      <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg">
 							      <div class="text-sm">
-							        <p class="text-gray-500 leading-none">{{ $article->user->name }}</p>
-							        <p class="text-gray-600">{{ $article->created_at }}</p>
+							        <p class="text-gray-400 leading-none">{{ $article->user->name }}</p>
+							        <p class="text-gray-500">{{ $article->created_at }}</p>
 							      </div>
 							    </div>
 							  </div>
@@ -227,10 +219,12 @@
 				<div class="sticky top-0">
 					<h4 class="font-bold text-4xl f-pts text-white  mb-10 border-b-2 border-gray-700 py-5">Top Category</h4>
 					<div class="w-full p-5 f-ubuntu rounded border-2 border-gray-700">
-						<ul class="list-disc list-inside text-gray-100 text-xl">
+						<ul class="list-disc list-inside text-gray-100 text-xl font-bold">
 
 							@foreach($categories as $category)
-								<li class="my-3 cursor-pointer">{{ $category->name }}</li>
+								<li class="my-3 list-none">
+									<a href="" class=" cursor-pointer hover:text-orange-500">{{ $category->name }}</a>
+								</li>
 							@endforeach
 						</ul>
 					</div>
@@ -240,6 +234,12 @@
 
 
 	</div>
+
+	<footer class="border-t-4 border-orange-500 bg-gray-800 px-32 py-12">
+		<div>
+
+		</div>
+	</footer>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"></script>

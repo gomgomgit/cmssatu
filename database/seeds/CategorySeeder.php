@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
 
         for ($i = 0; $i < 50; $i++) {
             Category::create([
-                'name' => $faker->word,
+                'name' => $faker->unique()->word,
             ]);
         }
     }

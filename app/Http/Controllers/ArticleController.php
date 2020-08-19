@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Model\Article;
 use App\Model\Category;
+use App\Model\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -35,8 +37,9 @@ class ArticleController extends Controller
 
     public function create()
     {
-        $datas = Category::all();
-        return view($this->view . 'create', compact('datas'));
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view($this->view . 'create', compact('categories', 'tags'));
     }
 
     public function store(Request $request)
@@ -51,9 +54,32 @@ class ArticleController extends Controller
             'content' => 'required',
         ]);
 
-        $request->merge(['user_id' => Auth::user()->id]);
+        $request->merge([
+            'user_id' => Auth::user()->id,
+            'slug' => Str::of($request->title)->slug('-'),
+        ]);
 
-        $this->model->create($request->all());
+        $lastArticle = $this->model->create($request->all());
+
+        $tagCollect = collect([]);
+
+        foreach ($request->tags as $tag) {
+            if ($findTag = Tag::where('name', '=', $tag)->first()) {
+                $targetTag = $findTag->id;
+            } else {
+
+                $targetTag = Tag::create([
+                    'name' => $tag,
+                ])->id;
+            }
+            $tagCollect->push($targetTag);
+
+        }
+        // dd($tagCollect);
+        $lastArticle->tags()->sync($tagCollect);
+
+        // $this->storeTags($request->tags, $last);
+
         return redirect($this->redirect);
     }
 
@@ -62,10 +88,11 @@ class ArticleController extends Controller
         $model = $this->model->find($id);
         $this->authorize('update', $model);
 
-        $datas = Category::all();
+        $categories = Category::all();
+        $tags = Tag::all();
         $data = $model;
 
-        return view($this->view . 'edit', compact('datas', 'data'));
+        return view($this->view . 'edit', compact('data', 'categories', 'tags'));
     }
 
     public function update(Request $request, $id)
@@ -83,7 +110,29 @@ class ArticleController extends Controller
             'content' => 'required',
         ]);
 
+        $request->merge([
+            'slug' => Str::of($request->title)->slug('-'),
+        ]);
+
         $data->update($request->all());
+
+        $tagCollect = collect([]);
+
+        foreach ($request->tags as $tag) {
+            if ($findTag = Tag::where('name', '=', $tag)->first()) {
+                $targetTag = $findTag->id;
+            } else {
+
+                $targetTag = Tag::create([
+                    'name' => $tag,
+                ])->id;
+            }
+
+            $tagCollect->push($targetTag);
+
+        }
+
+        $data->tags()->sync($tagCollect);
 
         return redirect($this->redirect);
     }
@@ -120,5 +169,15 @@ class ArticleController extends Controller
         if ($img && file_exists($fullPath)) {
             unlink($fullPath);
         }
+    }
+
+    public function storeTags($tags, $lastArticle)
+    {
+        // foreach ($tags as $tag) {
+        //     $lastTag = Tag::create([
+        //         'name' => $tag,
+        //     ]);
+
+        // }
     }
 }

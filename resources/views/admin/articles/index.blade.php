@@ -8,7 +8,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 55ch;
+        max-width: 12ch;
     }
 </style>
 @endsection
@@ -28,6 +28,7 @@
                             <th>Category</th>
                             <th>Author</th>
                             <th>Content</th>
+                            <th>Tags</th>
                             <th>Image</th>
                             <th>Actions</th>
                         </tr>
@@ -38,6 +39,7 @@
                             <th>Category</th>
                             <th>Author</th>
                             <th>Content</th>
+                            <th>Tags</th>
                             <th>Image</th>
                             <th>Actions</th>
                         </tr>
@@ -51,7 +53,13 @@
                                     <td>{{ $data->category->name }}</td>
                                     <td>{{ $data->user->name }}</td>
                                     <td class="contentgap">{{ $data->content }}</td>
-                                    <td><img src="/img/{{ $data->image }}"></td>
+                                    <td>
+                                        {{ $data->tags()->count() }}
+                                        {{-- @foreach($data->tags() as $tag)
+                                            <span>{{ $tag }}</span>
+                                        @endforeach --}}
+                                    </td>
+                                    <td><img class="" style="width: 40px;" src="/img/{{ $data->image }}"></td>
                                     <td>
                                         <a href="{{ route('admin.articles.edit', $data->id) }}">
                                             <button class="btn btn-datatable btn-icon btn-transparent-dark mr-2"><i data-feather="edit-3"></i></button>

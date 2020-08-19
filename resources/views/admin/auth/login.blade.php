@@ -42,28 +42,21 @@
                   <form class="user" action="{{ route('admin.loginProcess') }}" method="post">
                     @csrf
 
-                    @if($errors->any())
-                    <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email" value="{{ old('email') }}">
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password">
                     </div>
+
+
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
                         <input type="checkbox" class="custom-control-input" id="customCheck">
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
+
                     <div>
                       @if($errors->any())
                         <ul>
@@ -72,7 +65,14 @@
                           @endforeach
                         </ul>
                       @endif
+
+                      @if (session('error'))
+                        <ul>
+                            <li class="text-danger">{{ session('error') }}</li>
+                        </ul>
+                      @endif
                     </div>
+
                     <button class="btn btn-primary btn-user btn-block">
                       Login
                     </button>

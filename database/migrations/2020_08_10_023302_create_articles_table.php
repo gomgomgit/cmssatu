@@ -20,7 +20,8 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('image')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('slug');
+            $table->smallInteger('counter')->default(0);
             $table->timestamps();
         });
     }
