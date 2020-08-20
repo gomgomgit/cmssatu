@@ -67,7 +67,7 @@
 				<div class="text-gray-500 text-sm my-4">
 					<div class="mb-2">
 						<span class="mr-2"><i class="mr-2 fas fa-user"></i> {{ $article->user->name }}</span>
-						<span class="mr-2"><i class="mr-2 fas fa-calendar"></i> {{ $article->created_at }}</span>
+						<span class="mr-2"><i class="mr-2 fas fa-calendar"></i> {{ date("d M Y", strtotime($article->created_at)) }}</span>
 					</div>
 					<div class="mb-2">
 						<span class="mr-2"><i class="mr-2 fas fa-tag"></i>
@@ -142,6 +142,20 @@
 							@foreach($categories as $category)
 								<li class="my-3 list-none">
 									<a href="" class=" cursor-pointer hover:text-orange-500"><i class="fas fa-hashtag"></i> {{ Str::upper($category->name) }}</a>
+								</li>
+							@endforeach
+						</ul>
+					</div>
+				</div>
+
+				<div class="px-5">
+					<h3 class="font-bold text-4xl text-white pb-4 border-b-2 border-gray-700 mb-10 border-b-2 border-gray-700 py-5">Related Article</h3>
+					<div class="w-full p-5 f-ubuntu rounded border-2 border-gray-700">
+						<ul class="list-disc list-inside text-gray-100 text-xl font-bold">
+
+							@foreach($related as $related)
+								<li class="my-3 list-none">
+									<a href="" class=" cursor-pointer hover:text-orange-500"><i class="fas fa-hashtag"></i> {{ Str::upper($related->title) }}</a>
 								</li>
 							@endforeach
 						</ul>

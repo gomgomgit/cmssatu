@@ -59,6 +59,7 @@ class HomeController extends Controller
         $comments = Comment::where('article_id', $article->id)->orderBy('created_at', 'desc')->get();
         $article->increment('counter');
         $categories = Category::withCount('articles')->orderBy('articles_count', 'desc')->take(10)->get();
-        return view('home.article', compact('article', 'comments', 'categories'));
+        $related = Article::where('category_id', '=', $article->category_id)->get();
+        return view('home.article', compact('article', 'comments', 'categories', 'related'));
     }
 }

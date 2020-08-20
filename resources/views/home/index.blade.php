@@ -198,10 +198,10 @@
 
 						@foreach($articles as $article)
 
-							<div class="max-w-sm w-full lg:max-w-full lg:flex border-b-2 border-gray-700 py-1">
-							  <div class="h-48 w-56 flex-none rounded bg-cover" style="background-image: url('/img/{{ $article->image }}')">
+							<div class="max-w-sm w-full lg:max-w-full lg:flex border-b-2 border-gray-700 pb-5">
+							  <div class="h-56 w-64 flex-none rounded bg-cover" style="background-image: url('/img/{{ $article->image }}')">
 							  </div>
-							  <div class="bg-transparent rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+							  <div class="bg-transparent rounded-b lg:rounded-b-none lg:rounded-r px-4 flex flex-col justify-between leading-normal">
 							    <div class="mb-4">
 							      <p class="text-sm text-gray-400 flex items-center">
 							        {{ $article->category->name }}
@@ -211,7 +211,7 @@
 							      </div>
 
 							      <div style="">
-							      	<span class="text-gray-200 text-base text-white content-article">{!! Str::limit($article->content,300,'...') !!}</span>
+							      	<span class="text-gray-200 text-base text-white content-article">{!! Str::limit($article->content,200,'...') !!}</span>
 							      </div>
 
 							    </div>
@@ -221,10 +221,10 @@
 						    		@endforeach
 						    	</div>
 							    <div class="flex items-center">
-							      <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg">
+							      <img class="w-10 h-10 rounded-full mr-4" src="https://lofrev.net/wp-content/photos/2017/03/user_blue_logo.png">
 							      <div class="text-sm">
-							        <p class="text-gray-300 leading-none">{{ $article->user->name }}</p>
-							        <p class="text-gray-500">{{ $article->created_at }}</p>
+							        <p class="text-gray-300 leading-none mb-1">{{ $article->user->name }}</p>
+							        <p class="text-gray-500">{{ date("d M Y", strtotime($article->created_at)) }}</p>
 							      </div>
 							    </div>
 							  </div>
