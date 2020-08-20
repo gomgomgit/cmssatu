@@ -64,11 +64,25 @@
 						{!! $article->content !!}
 				</div>
 
-				<div>
-					<span class="text-gray-500 text-sm">{{ $article->user->name }} - {{ $article->created_at }}</span>
+				<div class="text-gray-500 text-sm my-4">
+					<div class="mb-2">
+						<span class="mr-2"><i class="mr-2 fas fa-user"></i> {{ $article->user->name }}</span>
+						<span class="mr-2"><i class="mr-2 fas fa-calendar"></i> {{ $article->created_at }}</span>
+					</div>
+					<div class="mb-2">
+						<span class="mr-2"><i class="mr-2 fas fa-tag"></i>
+							@foreach($article->tags as $tag)
+							<span>{{ $tag->name }}, </span>
+							@endforeach
+						</span>
+					</div>
+					<div class="mb-2">
+						<span class="mr-2"><i class="mr-2 fas fa-bookmark"></i>{{ $article->category->name }}</span>
+						<span class="mr-2"><i class="mr-2 fas fa-eye"></i>{{ $article->tags->count() }}</span>
+					</div>
 				</div>
 
-				<div class="bg-gray-100 text-black mt-6 p-5">
+				<div class="bg-gray-100 text-black mt-6 px-6 pt-5">
 					<h6 class="border-b-4 border-black font-bold text-3xl mb-4">Comments</h6>
 
 						<div class="mb-8">
@@ -89,15 +103,15 @@
 
 								</div>
 
-								<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Send a Comment</button>
+								<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-6">Send a Comment</button>
 							</form>
 
 						</div>
 
 
 					@foreach($comments as $comment)
-						<div class="border-t-2 border-gray-500">
-							<div class="grid grid-cols-7 gap-32 f-pts my-6">
+						<div class="border-t-2 border-gray-500 py-6">
+							<div class="grid grid-cols-7 gap-32 f-pts">
 								<div class="inline-block overflow-hidden" style="width: 120px; height: 120px;">
 									<img class="w-full" src="https://rpn.co.id/beta/wp-content/uploads/2018/11/unknown-user-6.png">
 								</div>
@@ -119,7 +133,19 @@
 			<div>
 
 				<div class="px-5">
-					<h3 class="font-bold text-3xl text-white pb-4 border-b-2 border-gray-700">Category</h3>
+					<h3 class="font-bold text-4xl text-white pb-4 border-b-2 border-gray-700 mb-10 border-b-2 border-gray-700 py-5">Category</h3>
+
+					{{-- <h4 class="font-bold text-4xl f-pts text-white  mb-10 border-b-2 border-gray-700 py-5">Top Category</h4> --}}
+					<div class="w-full p-5 f-ubuntu rounded border-2 border-gray-700">
+						<ul class="list-disc list-inside text-gray-100 text-xl font-bold">
+
+							@foreach($categories as $category)
+								<li class="my-3 list-none">
+									<a href="" class=" cursor-pointer hover:text-orange-500"><i class="fas fa-hashtag"></i> {{ Str::upper($category->name) }}</a>
+								</li>
+							@endforeach
+						</ul>
+					</div>
 				</div>
 
 
@@ -127,6 +153,9 @@
 
 		</div>
 	</div>
+
+	{{-- font-awesome-5 --}}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js" integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg==" crossorigin="anonymous"></script>
 
 </body>
 </html>

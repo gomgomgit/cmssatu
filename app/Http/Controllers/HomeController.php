@@ -56,8 +56,9 @@ class HomeController extends Controller
     public function show($slug)
     {
         $article = Article::where('slug', $slug)->first();
-        $comments = Comment::where('article_id', $article->id)->get();
+        $comments = Comment::where('article_id', $article->id)->orderBy('created_at', 'desc')->get();
         $article->increment('counter');
-        return view('home.article', compact('article', 'comments'));
+        $categories = Category::withCount('articles')->orderBy('articles_count', 'desc')->take(10)->get();
+        return view('home.article', compact('article', 'comments', 'categories'));
     }
 }
