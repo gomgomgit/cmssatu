@@ -10,6 +10,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" />
 	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 
+	{{-- AOS --}}
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 	<style type="text/css">
 		.f-pts {
 			font-family: 'PT Sans', sans-serif;
@@ -161,8 +164,8 @@
 		<h3 class="font-bold text-4xl f-ubuntu text-white mb-10 border-b-2 border-gray-700 py-5">Update</h3>
 
 		<div class="grid grid-cols-4 grid-flow-col gap-4">
-			@foreach($latests as $latest)
-					<div class="max-w-sm rounded overflow-hidden shadow-lg" style="background: #1b212e">
+			@foreach($latests as $key => $latest)
+					<div class="max-w-sm rounded overflow-hidden shadow-lg" style="background: #1b212e" data-aos="fade-up" data-aos-offset="700" data-aos-delay="{{ 100 + ($key * 300) }}" data-aos-duration="1200">
 						<div class="p-1 border-2 border-gray-700 h-64">
 					  		<img class="w-full h-full" src="/img/{{ $latest->image }}" alt="{{ $latest->title }}">
 
@@ -273,6 +276,9 @@
 	{{-- font-awesome-5 --}}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js" integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg==" crossorigin="anonymous"></script>
 
+	{{-- AOS --}}
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -287,6 +293,9 @@
 		    ],
 		  });
 		});
+	</script>
+	<script>
+	  AOS.init();
 	</script>
 </body>
 </html>
