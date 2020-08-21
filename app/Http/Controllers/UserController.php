@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Article;
 use App\Model\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -71,13 +72,14 @@ class UserController extends Controller
 
         $this->authorize('delete', $data);
 
-        Auth::logout();
-
-        $data->delete();
+        Article::where('user_id', $id)->update(['user_id' => 1]);
 
         if (Auth::user()->role == 'admin') {
+            $data->delete();
             return redirect($this->redirect);
         } else {
+            Auth::logout();
+            $data->delete();
             return redirect('/admin/login');
         }
 
