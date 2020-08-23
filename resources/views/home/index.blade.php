@@ -68,7 +68,7 @@
 			@foreach($populars as $popular)
 				<div class="item w-full bg-cover z-30" style="background-image: url(/img/{{ $popular->image }}); height: 550px;">
 						<div class="pl-16 py-20 pr-64 z-40">
-							<h3 class="font-bold text-2xl text-gray-300 ">{{ $popular->category->name }}</h3>
+							<h3 class="font-bold text-2xl text-orange-500 ">{{ $popular->category->name }}</h3>
 							<h2 class="font-extrabold text-6xl text-gray-200 f-pts w-50 leading-none">{{ Str::upper($popular->title) }}</h2>
 
 							<div class="mt-8">
