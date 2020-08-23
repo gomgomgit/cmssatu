@@ -99,10 +99,18 @@
 			font-weight: bold;
 			transform: translate(-50%, -50%);
 		}
-		.show-overlay:hover {
+		.overlay-trigger:hover .show-overlay{
 			opacity: 1;
 			background: rgba(0,0,0,0.5);
 			transition: all 0.2s linear;
+		}
+		.image-latest {
+			transition: all 0.3 linear;
+		}
+
+		.overlay-trigger:hover .image-latest {
+			transform: scale(1.1);
+			transition: all 0.3s linear;
 		}
 
 		.bg-p-typo {

@@ -10,12 +10,12 @@
 	<link rel="stylesheet" href="/css/custom.css">
 </head>
 <body>
-	<nav class="bg-gray-800 border-b-4 border-orange-500 sticky top-0">
-		<div class="flex items-center justify-between flex-wrap px-32">
+	<nav class="bg-gray-900 border-b-4 border-orange-600 z-50">
+		<div class="flex items-center justify-between flex-wrap px-48">
 			<div>
 			  <div class="flex items-center flex-shrink-0 text-white mr-6">
 			    <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
-			    <span class="font-extrabold text-4xl tracking-tight"><a href="/">SUP?</a></span>
+			    <span class="font-extrabold text-4xl tracking-tight">SUP?</span>
 			  </div>
 			  <div class="block lg:hidden">
 			    <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -25,13 +25,19 @@
 			</div>
 			<div class="flex w-full block items-center lg:w-auto">
 			    <div class="text-sm lg:flex-grow">
-			      <a href="/" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
+			      <a href="/" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-600 hover:text-white text-xl font-bold">
 			        Home
 			      </a>
-			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
+			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-600 hover:text-white text-xl font-bold">
 			        Examples
 			      </a>
-			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
+			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-600 hover:text-white text-xl font-bold">
+			        Examples
+			      </a>
+			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-600 hover:text-white text-xl font-bold">
+			        Examples
+			      </a>
+			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-600 hover:text-white text-xl font-bold">
 			        Blog
 			      </a>
 			    </div>
@@ -39,7 +45,7 @@
 		</div>
 	</nav>
 
-	<div class="bg-gray-900 py-16 px-32">
+	<div class="bg-p-typo py-16 px-48">
 		<div class="f-pts">
 			<h2 class="font-bold text-5xl text-white">{{$article->title}}</h2>
 			<h3 class="font-bold text-gray-500"><a class="text-orange-500" href="/">HOME</a> / THE COLDEST SUNSET</h3>
@@ -65,7 +71,7 @@
 						<span class="mr-2"><i class="mr-2 fas fa-calendar"></i> {{ date("d M Y", strtotime($article->created_at)) }}</span>
 					</div>
 					<div class="mb-2">
-						<span class="mr-2"><i class="mr-2 fas fa-tag"></i>
+						<span class="mr-2"><i class="mr-2 fas fa-tags"></i>
 							@foreach($article->tags as $tag)
 							<span>{{ $tag->name }}, </span>
 							@endforeach
@@ -143,15 +149,14 @@
 			<div>
 
 				<div class="px-5">
-					<h3 class="font-bold text-4xl text-white pb-4 border-b-2 border-gray-700 mb-10 border-b-2 border-gray-700 py-5">Category</h3>
+					<h3 class="font-bold text-4xl text-white pb-4 border-b-2 border-gray-700 mb-3 border-b-2 border-gray-700 py-2">Category</h3>
 
 					{{-- <h4 class="font-bold text-4xl f-pts text-white  mb-10 border-b-2 border-gray-700 py-5">Top Category</h4> --}}
-					<div class="w-full p-5 f-ubuntu rounded border-2 border-gray-700">
-						<ul class="list-disc list-inside text-gray-100 text-xl font-bold">
-
+					<div class="w-full f-pts rounded p-2">
+						<ul class="list-disc list-inside font-bold">
 							@foreach($categories as $category)
 								<li class="my-3 list-none">
-									<a href="" class=" cursor-pointer hover:text-orange-500"><i class="fas fa-hashtag"></i> {{ Str::upper($category->name) }}</a>
+									<a href="" class=" cursor-pointer hover:text-gray-100 text-orange-500"><i class="fas fa-chevron-right text-xs align-baseline"> </i> {{ Str::upper($category->name) }}</a>
 								</li>
 							@endforeach
 						</ul>
@@ -159,16 +164,16 @@
 				</div>
 
 				<div class="px-5">
-					<h3 class="font-bold text-4xl text-white pb-4 border-b-2 border-gray-700 mb-10 border-b-2 border-gray-700 py-5">Related Article</h3>
+					<h3 class="font-bold text-4xl text-white pb-4 border-b-2 border-gray-700 mb-5 border-b-2 border-gray-700 py-5">Related Article</h3>
 					<div class="w-full f-ubuntu grid grid-cols-1 gap-2 text-white">
 						@foreach($related as $related)
 
-						<div class="grid grid-cols-3 gap-4">
-							<div class="w-32 h-32 mr-2">
-								<img class="h-full" src="/img/{{ $related->image }}">
+						<div class="grid grid-cols-5 gap-4">
+							<div class="w-32 h-24 mr-2 col-span-2">
+								<img class="object-cover h-full" src="/img/{{ $related->image }}">
 							</div>
-							<div class="col-span-2">
-								<p class="text-white cursor-pointer text-xl">{{ $related->title }}</p>
+							<div class="col-span-3">
+								<p class=" cursor-pointer text-gray-100">{{ $related->title }}</p>
 							</div>
 						</div>
 
@@ -181,6 +186,45 @@
 
 		</div>
 	</div>
+
+
+
+	<footer class="border-t-4 border-orange-600 bg-gray-900 px-48 py-12">
+		<div class="grid grid-cols-4">
+			<div>
+				<h5 class="text-2xl font-bold text-white mb-3">NEWS</h5>
+				<span class="text-gray-100 font-bold ">
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+				</span>
+			</div>
+			<div>
+				<h5 class="text-2xl font-bold text-white mb-3">NEWS</h5>
+				<span class="text-gray-100 font-bold ">
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+				</span>
+			</div>
+			<div>
+				<h5 class="text-2xl font-bold text-white mb-3">NEWS</h5>
+				<span class="text-gray-100 font-bold ">
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+				</span>
+			</div>
+			<div>
+			</div>
+		</div>
+	</footer>
 
 	{{-- font-awesome-5 --}}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js" integrity="sha512-YSdqvJoZr83hj76AIVdOcvLWYMWzy6sJyIMic2aQz5kh2bPTd9dzY3NtdeEAzPp/PhgZqr4aJObB3ym/vsItMg==" crossorigin="anonymous"></script>

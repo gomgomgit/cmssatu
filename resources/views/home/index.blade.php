@@ -10,6 +10,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" />
 	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+
 	{{-- AOS --}}
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -136,17 +139,20 @@
 	</div>
 
 
-	<div class="px-48 bg-gray-800">
+	<div class="px-48 bg-p-typo">
 		<h3 class="font-bold text-4xl f-ubuntu text-white mb-10 border-b-2 border-gray-700 py-5">Update</h3>
 
 		<div class="grid grid-cols-4 grid-flow-col gap-4">
 			@foreach($latests as $key => $latest)
 					<div class="max-w-sm rounded overflow-hidden shadow-lg" style="background: #21293b" data-aos="fade-up" data-aos-offset="600" data-aos-delay="{{ 100 + ($key * 300) }}" data-aos-duration="1200">
-						<div class="p-1 border-2 border-gray-700 h-64 relative">
-							<div class="absolute show-overlay">
-								<i class="fas fa-search show-logo cursor-pointer"></i>
+						<div class="p-1 border-2 border-gray-700 h-64 relative latest-card">
+							<div class="absolute inset-0 overlay-trigger overflow-hidden">
+								<div class="absolute show-overlay">
+									<i class="fas fa-search show-logo cursor-pointer"></i>
+								</div>
+						  		<img class="object-cover h-full rounded transform image-latest" src="/img/{{ $latest->image }}" alt="{{ $latest->title }}">
+
 							</div>
-					  		<img class="object-cover h-full rounded" src="/img/{{ $latest->image }}" alt="{{ $latest->title }}">
 
 						</div>
 					  <div class="px-6 py-4" style="height: 230px;">
@@ -197,7 +203,7 @@
 							      </div>
 
 							    </div>
-						    	<div class="text-gray-400 mb-4"><i class="fas fa-tag mr-2"></i>
+						    	<div class="text-gray-400 mb-4"><i class="fas fa-tags mr-2"></i>
 						    		@foreach($article->tags as $tag)
 						    			<span class="text-sm">{{ $tag->name }}, </span>
 						    		@endforeach
@@ -217,6 +223,7 @@
 						<div class="float-right text-white">
 							{{ $articles->links() }}
 						</div>
+						<p>{{ $articles->onFirstPage() }}</p>
 					</div>
 
 
