@@ -41,7 +41,7 @@ class ArticleSeeder extends Seeder
                 'content' => '<p>' . $faker->text(330) . '</p>',
                 'user_id' => rand(1, 3),
                 'slug' => Str::of($title)->slug('-'),
-                'image' => 'default.jpg',
+                'image' => 'default' . rand(1, 4) . '.jpg',
                 'counter' => rand(0, 5),
                 'created_at' => $now->subMinutes($i),
             ]);

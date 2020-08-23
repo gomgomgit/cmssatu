@@ -5,14 +5,9 @@
 
 	<link rel="stylesheet" href="/css/main.css">
 	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
-	<style type="text/css">
-		.f-pts {
-			font-family: 'PT Sans', sans-serif;
-		}
-		.f-ubuntu {
-			    font-family: 'Ubuntu', sans-serif;
-		}
-	</style>
+
+	{{-- Custom Css --}}
+	<link rel="stylesheet" href="/css/custom.css">
 </head>
 <body>
 	<nav class="bg-gray-800 border-b-4 border-orange-500 sticky top-0">
@@ -78,7 +73,7 @@
 					</div>
 					<div class="mb-2">
 						<span class="mr-2"><i class="mr-2 fas fa-bookmark"></i>{{ $article->category->name }}</span>
-						<span class="mr-2"><i class="mr-2 fas fa-eye"></i>{{ $article->tags->count() }}</span>
+						<span class="mr-2"><i class="mr-2 fas fa-eye"></i>{{ $article->counter }}</span>
 					</div>
 				</div>
 
@@ -117,13 +112,28 @@
 								</div>
 								<div class="col-span-6">
 									<p class="font-bold text-xl">{{ $comment->name }}</p>
-									<p>{{ $comment->body }}</p>
+									<p class="h-16">{{ $comment->body }}</p>
+									<p class="text-sm">{{ date('d M Y', strtotime($comment->created_at)) }}</p>
 								</div>
 
 							</div>
 
 						</div>
 					@endforeach
+						<div class="border-t-2 border-gray-500 py-6">
+							<div class="grid grid-cols-7 gap-32 f-pts">
+								<div class="inline-block overflow-hidden" style="width: 120px; height: 120px;">
+									<img class="w-full" src="https://rpn.co.id/beta/wp-content/uploads/2018/11/unknown-user-6.png">
+								</div>
+								<div class="col-span-6">
+									<p class="font-bold text-xl">Admin</p>
+									<p class="h-16">its so good</p>
+									<p class="text-sm">{{ date("d M Y", strtotime($article->created_at)) }}</p>
+								</div>
+
+							</div>
+
+						</div>
 
 
 				</div>
@@ -150,15 +160,19 @@
 
 				<div class="px-5">
 					<h3 class="font-bold text-4xl text-white pb-4 border-b-2 border-gray-700 mb-10 border-b-2 border-gray-700 py-5">Related Article</h3>
-					<div class="w-full p-5 f-ubuntu rounded border-2 border-gray-700">
-						<ul class="list-disc list-inside text-gray-100 text-xl font-bold">
+					<div class="w-full f-ubuntu grid grid-cols-1 gap-2 text-white">
+						@foreach($related as $related)
 
-							@foreach($related as $related)
-								<li class="my-3 list-none">
-									<a href="" class=" cursor-pointer hover:text-orange-500"><i class="fas fa-hashtag"></i> {{ Str::upper($related->title) }}</a>
-								</li>
-							@endforeach
-						</ul>
+						<div class="grid grid-cols-3 gap-4">
+							<div class="w-32 h-32 mr-2">
+								<img class="h-full" src="/img/{{ $related->image }}">
+							</div>
+							<div class="col-span-2">
+								<p class="text-white cursor-pointer text-xl">{{ $related->title }}</p>
+							</div>
+						</div>
+
+						@endforeach
 					</div>
 				</div>
 

@@ -13,92 +13,13 @@
 	{{-- AOS --}}
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-	<style type="text/css">
-		.f-pts {
-			font-family: 'PT Sans', sans-serif;
-		}
-		.f-ubuntu {
-			    font-family: 'Ubuntu', sans-serif;
-		}
-		.owl-theme .owl-nav [class*="owl-"]{
-			background: none;
-			font-size: 40px;
-			transition: transform 0.2s;
-		}
-		.owl-theme .owl-nav [class*="owl-"]:hover {
-			background: none;
-			transform: scale(1.5);
-			transition: transform 0.2s;
-		}
 
-		.owl-prev, .owl-next {
-		    position: absolute;
-		    height: 100px;
-		    color: inherit;
-		    background: transparent;
-		    border: none;
-		    z-index: 40;
-		    top: 270px;
-
-		    i{
-		    	color: white;
-		    	font-size: 5rem;
-		    }
-		}
-
-		.owl-prev {
-		    left: 180px;
-		}
-
-		.owl-next {
-		    right: 180px;
-		}
-		.owl-dots {
-			position: absolute;
-			bottom: 20px;
-			left: 30px;
-			z-index: 50;
-		}
-		.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
-			background-color: white;
-		}
-		.owl-theme .owl-dots .owl-dot span{
-			background-color: #999999;
-		}
-		/*.pagination {
-			display: flex;
-			color: #e2e8f0;
-			font-weight: bold;
-			margin: auto;
-		}
-		.page-item:first-child {
-			margin-left: 0px;
-		}
-		.page-item {
-			padding: 10px 20px;
-			background: #2d3748;
-			margin: 5px;
-			border-radius: 5px;
-		}
-		.page-item:hover {
-			background: #ed8936;
-			color: white;
-		}*/
-
-		.content-article {
-			/*white-space: nowrap;*/
-			overflow: hidden;
-			text-overflow: ellipsis;
-			max-width: 100ch;
-			word-wrap: break-word;
-		}
-
-
-	</style>
+	{{-- Custom Css --}}
+	<link rel="stylesheet" href="/css/custom.css">
 </head>
 <body>
-	<nav class="bg-gray-800 border-b-4 border-orange-500 z-50">
-		<div class="flex items-center justify-between flex-wrap px-32">
+	<nav class="bg-gray-900 border-b-4 border-orange-600 z-50">
+		<div class="flex items-center justify-between flex-wrap px-48">
 			<div>
 			  <div class="flex items-center flex-shrink-0 text-white mr-6">
 			    <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
@@ -112,13 +33,19 @@
 			</div>
 			<div class="flex w-full block items-center lg:w-auto">
 			    <div class="text-sm lg:flex-grow">
-			      <a href="/" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
+			      <a href="/" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-600 hover:text-white text-xl font-bold">
 			        Home
 			      </a>
-			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
+			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-600 hover:text-white text-xl font-bold">
 			        Examples
 			      </a>
-			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-500 hover:text-white text-xl font-bold">
+			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-600 hover:text-white text-xl font-bold">
+			        Examples
+			      </a>
+			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-600 hover:text-white text-xl font-bold">
+			        Examples
+			      </a>
+			      <a href="#responsive-header" class="px-5 py-8 block inline-block mt-0 text-gray-300 hover:bg-orange-600 hover:text-white text-xl font-bold">
 			        Blog
 			      </a>
 			    </div>
@@ -128,7 +55,7 @@
 
 
 
-	<div class="px-64 py-12 w-full bg-gray-900 border-b-4 border-orange-500 relative">
+	<div class="px-64 py-12 w-full bg-p-typo relative">
 
 		<div class="owl-theme top-0 z-10">
 		     <div class="owl-controls">
@@ -139,10 +66,18 @@
 		<div class="owl-carousel owl-theme">
 
 			@foreach($populars as $popular)
-				<div class="item w-full bg-cover" style="background-image: url(/img/{{ $popular->image }}); height: 550px;">
-						<div class="pl-16 py-16 pr-32">
-							<h2 class="font-extrabold text-6xl text-gray-200 f-pts">{{ $popular->title }}</h2>
-							<h3 class="font-bold text-2xl text-gray-300">{{ $popular->category->name }}</h3>
+				<div class="item w-full bg-cover z-30" style="background-image: url(/img/{{ $popular->image }}); height: 550px;">
+						<div class="pl-16 py-20 pr-64 z-40">
+							<h3 class="font-bold text-2xl text-gray-300 ">{{ $popular->category->name }}</h3>
+							<h2 class="font-extrabold text-6xl text-gray-200 f-pts w-50 leading-none">{{ Str::upper($popular->title) }}</h2>
+
+							<div class="mt-8">
+								<a href="/article/{{ $popular->slug }}" class="bg-transparent hover:bg-gray-200 text-gray-200 hover:text-gray-900 f-pts text-lg font-bold hover:text-white py-2 px-6 border border-gray-200 hover:border-transparent rounded">
+								  READ MORE
+								</a>
+
+							</div>
+
 						</div>
 				</div>
 			@endforeach
@@ -158,19 +93,63 @@
 
 	</div>
 
+	<div class="h-48 border-b-4 border-t-4 border-orange-600 bg-gray-900">
+		<div class="px-48 py-8 grid grid-cols-4 gap-6 f-pts ">
+			<div class="flex justify-between">
+				<div class="h-16 w-16 text-gray-300 rounded-full pr-4">
+					<p class="font-bold text-5xl m-auto inline-block"><i class="fas fa-clock"></i></p>
+				</div>
+				<div>
+					<h5 class="text-white font-bold text-2xl f-ubuntu">LOREM</h5>
+					<p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+			</div>
+			<div class="flex justify-between">
+				<div class="h-16 w-16 text-gray-300 rounded-full pr-4">
+					<p class="font-bold text-5xl m-auto inline-block"><i class="fas fa-comments"></i></p>
+				</div>
+				<div>
+					<h5 class="text-white font-bold text-2xl f-ubuntu">LOREM</h5>
+					<p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+			</div>
+			<div class="flex justify-between">
+				<div class="h-16 w-16 text-gray-300 rounded-full pr-4">
+					<p class="font-bold text-5xl m-auto inline-block"><i class="fas fa-bell"></i></p>
+				</div>
+				<div>
+					<h5 class="text-white font-bold text-2xl f-ubuntu">LOREM</h5>
+					<p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+			</div>
+			<div class="flex justify-between">
+				<div class="h-16 w-16 text-gray-300 rounded-full pr-4">
+					<p class="font-bold text-5xl m-auto inline-block"><i class="fas fa-hands-helping"></i></p>
+				</div>
+				<div>
+					<h5 class="text-white font-bold text-2xl f-ubuntu">LOREM</h5>
+					<p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 
-	<div class="px-32 py-16 bg-gray-900">
+	<div class="px-48 bg-gray-800">
 		<h3 class="font-bold text-4xl f-ubuntu text-white mb-10 border-b-2 border-gray-700 py-5">Update</h3>
 
 		<div class="grid grid-cols-4 grid-flow-col gap-4">
 			@foreach($latests as $key => $latest)
-					<div class="max-w-sm rounded overflow-hidden shadow-lg" style="background: #1b212e" data-aos="fade-up" data-aos-offset="700" data-aos-delay="{{ 100 + ($key * 300) }}" data-aos-duration="1200">
-						<div class="p-1 border-2 border-gray-700 h-64">
-					  		<img class="w-full h-full" src="/img/{{ $latest->image }}" alt="{{ $latest->title }}">
+					<div class="max-w-sm rounded overflow-hidden shadow-lg" style="background: #21293b" data-aos="fade-up" data-aos-offset="600" data-aos-delay="{{ 100 + ($key * 300) }}" data-aos-duration="1200">
+						<div class="p-1 border-2 border-gray-700 h-64 relative">
+							<div class="absolute show-overlay">
+								<i class="fas fa-search show-logo cursor-pointer"></i>
+							</div>
+					  		<img class="object-cover h-full rounded" src="/img/{{ $latest->image }}" alt="{{ $latest->title }}">
 
 						</div>
-					  <div class="px-6 py-4" style="height: 190px;">
+					  <div class="px-6 py-4" style="height: 230px;">
 					    <div class="font-bold text-2xl mb-2 text-orange-500 hover:text-white cursor-pointer inline-block">
 					    	<a href="/article/{{ $latest->slug }}">{{ $latest->title }}</a>
 						</div>
@@ -192,7 +171,7 @@
 		</div>
 
 
-		<div class="grid grid-cols-4 gap-4">
+		<div class="grid grid-cols-4 gap-8">
 			<div class="my-12 col-span-3">
 				<div class="">
 					<h3 class="font-bold text-4xl f-ubuntu text-white  mb-10 border-b-2 border-gray-700 py-5">For You</h3>
@@ -245,14 +224,14 @@
 			</div>
 
 			<div class="col-span-1 mt-12">
-				<div class="sticky top-0">
-					<h4 class="font-bold text-4xl f-pts text-white  mb-10 border-b-2 border-gray-700 py-5">Top Category</h4>
-					<div class="w-full p-5 f-ubuntu rounded border-2 border-gray-700">
-						<ul class="list-disc list-inside text-gray-100 text-xl font-bold">
+				<div class="">
+					<h4 class="font-bold text-4xl f-pts text-white mb-4 border-b-2 border-gray-700 py-5">Top Category</h4>
+					<div class="w-full f-pts rounded p-2">
+						<ul class="list-disc list-inside font-bold">
 
 							@foreach($categories as $category)
 								<li class="my-3 list-none">
-									<a href="" class=" cursor-pointer hover:text-orange-500"><i class="fas fa-hashtag"></i> {{ Str::upper($category->name) }}</a>
+									<a href="" class=" cursor-pointer hover:text-gray-100 text-orange-500"><i class="fas fa-chevron-right text-xs align-baseline"> </i> {{ Str::upper($category->name) }}</a>
 								</li>
 							@endforeach
 						</ul>
@@ -264,9 +243,40 @@
 
 	</div>
 
-	<footer class="border-t-4 border-orange-500 bg-gray-800 px-32 py-12">
-		<div>
-
+	<footer class="border-t-4 border-orange-600 bg-gray-900 px-48 py-12">
+		<div class="grid grid-cols-4">
+			<div>
+				<h5 class="text-2xl font-bold text-white mb-3">NEWS</h5>
+				<span class="text-gray-100 font-bold ">
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+				</span>
+			</div>
+			<div>
+				<h5 class="text-2xl font-bold text-white mb-3">NEWS</h5>
+				<span class="text-gray-100 font-bold ">
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+				</span>
+			</div>
+			<div>
+				<h5 class="text-2xl font-bold text-white mb-3">NEWS</h5>
+				<span class="text-gray-100 font-bold ">
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+				</span>
+			</div>
+			<div>
+			</div>
 		</div>
 	</footer>
 
@@ -286,6 +296,9 @@
 		  	items:1,
 		  	loop: true,
 		  	nav: true,
+		  	animateOut: 'fadeOut',
+		  	autoplay: true,
+		  	autoplayHoverPause: true,
      		navContainer: '#customNav',
 		    navText: [
 		        '<i class="fas fa-angle-left" aria-hidden="true"></i>',
