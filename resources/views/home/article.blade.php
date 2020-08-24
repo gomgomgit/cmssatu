@@ -245,7 +245,7 @@
 							<i class="fab fa-facebook text-4xl m-2"></i>
 							<i class="fab fa-twitter text-4xl m-2"></i>
 							<i class="fab fa-telegram text-4xl m-2"></i>
-							<p class="align-middle font-bold text-xl m-auto w-1/2 bg-gray-400">@SUP.WHAT</p>
+							<p class="align-middle font-bold text-xl m-auto w-3/5 text-gray-400">@SUP.WHAT</p>
 						</div>
 						<div>
 						</div>

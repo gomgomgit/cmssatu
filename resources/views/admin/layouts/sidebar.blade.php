@@ -36,6 +36,7 @@ $menus = [
 
     [
         'title' => 'Users',
+        'active' => 'admin.users',
         'route' => 'admin.users.index',
         'icon' => 'fa-user',
         'model' => App\Model\User::class,
@@ -104,7 +105,7 @@ $menus = [
 
       @else
 
-        <li class="nav-item  {{ Request::routeIs("$menu[route]*") ? 'active':'' }}">
+        <li class="nav-item  {{ Request::routeIs("$menu[active]*") ? 'active':'' }}">
           <a class="nav-link" href="{{ route($menu['route']) }}">
             <i class="fas fa-fw {{ $menu['icon'] }}"></i>
             <span>{{ $menu['title'] }}</span></a>
