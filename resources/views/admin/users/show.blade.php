@@ -34,7 +34,8 @@
 	      <div class="card-body">
 
 	        <div class="bg-dark photo-border m-auto overflow-hidden">
-	        	<img class="photo h-100" src="https://cdn.newsapi.com.au/image/v1/13d65de9c6442e625c0931ad854a945a?width=650">
+	        	{{-- <img class="photo h-100" src="https://cdn.newsapi.com.au/image/v1/13d65de9c6442e625c0931ad854a945a?width=650"> --}}
+	        	<img class="photo h-100" src="https://icon-library.com/images/user-png-icon/user-png-icon-16.jpg">
 	        </div>
 
 	        <div class="mt-4">

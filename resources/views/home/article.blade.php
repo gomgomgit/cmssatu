@@ -4,7 +4,7 @@
 	<title>Home</title>
 
 	<link rel="stylesheet" href="/css/main.css">
-	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Aladin&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
 
 	{{-- Custom Css --}}
 	<link rel="stylesheet" href="/css/custom.css">
@@ -15,7 +15,7 @@
 			<div>
 			  <div class="flex items-center flex-shrink-0 text-white mr-6">
 			    <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
-			    <span class="font-extrabold text-4xl tracking-tight">SUP?</span>
+			    <span class="font-extrabold text-5xl tracking-tight f-aladin">SUP?</span>
 			  </div>
 			  <div class="block lg:hidden">
 			    <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -83,7 +83,7 @@
 					</div>
 				</div>
 
-				<div class="bg-gray-100 text-black mt-6 px-6 pt-5">
+				<div class="bg-gray-200 text-black mt-6 px-6 pt-5">
 					<h6 class="border-b-4 border-black font-bold text-3xl mb-4">Comments</h6>
 
 						<div class="mb-8">
@@ -173,7 +173,7 @@
 								<img class="object-cover h-full" src="/img/{{ $related->image }}">
 							</div>
 							<div class="col-span-3">
-								<p class=" cursor-pointer text-gray-100">{{ $related->title }}</p>
+								<p class=" cursor-pointer text-orange-500 hover:text-gray-100">{{ $related->title }}</p>
 							</div>
 						</div>
 
@@ -190,38 +190,68 @@
 
 
 	<footer class="border-t-4 border-orange-600 bg-gray-900 px-48 py-12">
-		<div class="grid grid-cols-4">
-			<div>
-				<h5 class="text-2xl font-bold text-white mb-3">NEWS</h5>
-				<span class="text-gray-100 font-bold ">
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+		<div class="grid grid-cols-9">
+			<div class="col-span-2">
+				<h5 class="text-2xl font-bold text-gray-100 mb-3">NEWS</h5>
+				<span class="text-gray-400 font-bold ">
+					<p><i class="fas fa-chevron-right text-xs"></i> Elementum velit</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Consequat</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Ipsum dolor</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Sit amet</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Consectetuer</p>
 				</span>
 			</div>
-			<div>
-				<h5 class="text-2xl font-bold text-white mb-3">NEWS</h5>
-				<span class="text-gray-100 font-bold ">
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+			<div class="col-span-2">
+				<h5 class="text-2xl font-bold text-gray-100 mb-3">OVERVIEW</h5>
+				<span class="text-gray-400 font-bold ">
+					<p><i class="fas fa-chevron-right text-xs"></i> Elementum velit</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Consequat</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Ipsum dolor</p>
 				</span>
 			</div>
-			<div>
-				<h5 class="text-2xl font-bold text-white mb-3">NEWS</h5>
-				<span class="text-gray-100 font-bold ">
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
-					<p><i class="fas fa-chevron-right text-xs"></i> Lorem</p>
+			<div class="col-span-2">
+				<h5 class="text-2xl font-bold text-gray-100 mb-3">NAVIGATION</h5>
+				<span class="text-gray-400 font-bold ">
+					<p><i class="fas fa-chevron-right text-xs"></i> Pellentesque sed</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Consequat</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Adipiscing elit</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Colaque eunak</p>
+					<p><i class="fas fa-chevron-right text-xs"></i> Lorem ipsum</p>
 				</span>
 			</div>
-			<div>
+			<div class="col-span-3">
+				<div class="ml-32 w-auto">
+					<div class="text-gray-100 flex justify-start mb-4">
+						<div class="mr-3">
+							<i class="fas fa-home text-3xl"></i>
+						</div>
+						<div class="text-gray-400">
+							<p>Jl.Kesana 4kali, Pintu Barat</p>
+							<p>98990 Sohor, Lalaisia.</p>
+						</div>
+					</div>
+					<div class="text-gray-100 flex justify-start mb-4">
+						<div class="mr-3">
+							<i class="fas fa-phone text-3xl"></i>
+						</div>
+						<div class="text-gray-400">
+							<p>Telephone: +623457890</p>
+							<p>Fax: +1928374650</p>
+						</div>
+					</div>
+					<div class="text-gray-100 flex justify-start mb-4">
+						<div class="mr-3">
+							<i class="fab fa-instagram text-4xl m-2"></i>
+							<i class="fab fa-facebook text-4xl m-2"></i>
+							<i class="fab fa-twitter text-4xl m-2"></i>
+							<i class="fab fa-telegram text-4xl m-2"></i>
+							<p class="align-middle font-bold text-xl m-auto w-1/2 bg-gray-400">@SUP.WHAT</p>
+						</div>
+						<div>
+						</div>
+					</div>
+
+				</div>
 			</div>
 		</div>
 	</footer>

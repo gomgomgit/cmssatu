@@ -5,6 +5,9 @@
 		.f-ubuntu {
 			    font-family: 'Ubuntu', sans-serif;
 		}
+		.f-aladin {
+			font-family: 'Aladin', cursive;
+		}
 		.owl-theme .owl-nav [class*="owl-"]{
 			background: none;
 			font-size: 40px;
