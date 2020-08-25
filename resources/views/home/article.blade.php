@@ -133,7 +133,7 @@
 								</div>
 								<div class="col-span-6">
 									<p class="font-bold text-xl">Admin</p>
-									<p class="h-16">its so good</p>
+									<p class="h-16">its so good!</p>
 									<p class="text-sm">{{ date("d M Y", strtotime($article->created_at)) }}</p>
 								</div>
 
