@@ -57,7 +57,7 @@
 
                 <div class="form-group">
                     <label for="inputImage" class="text-primary">Post Article Image</label>
-                    <input class="d-block" id="inputImage" type="file" placeholder="Title" name="image_file">
+                    <input class="d-block" id="inputImage" type="file" placeholder="Title" name="image_file" accept="image/*">
                 </div>
 
                 <div class="form-group">
