@@ -17,6 +17,10 @@ class CategorySeeder extends Seeder
 
         $faker = Factory::create('id_ID');
 
+        Category::create([
+            'name' => 'uncategorized',
+        ]);
+
         for ($i = 0; $i < 50; $i++) {
             Category::create([
                 'name' => $faker->unique()->word,

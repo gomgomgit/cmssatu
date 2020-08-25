@@ -62,4 +62,10 @@ class HomeController extends Controller
         $related = Article::where([['category_id', '=', $article->category_id], ['id', '!=', $article->id]])->get();
         return view('home.article', compact('article', 'comments', 'categories', 'related'));
     }
+    public function category($id)
+    {
+        $category = Category::where('id', $id)->first();
+        $articles = Article::where('category_id', $id)->paginate(9);
+        return view('home.category', compact('category', 'articles'));
+    }
 }

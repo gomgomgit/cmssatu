@@ -45,146 +45,66 @@
 		</div>
 	</nav>
 
-	<div class="bg-p-typo py-16 px-48">
-		<div class="f-pts">
-			<h2 class="font-bold text-5xl text-white">{{$article->title}}</h2>
-			<h3 class="font-bold text-gray-500"><a class="text-orange-500" href="/">HOME</a> / THE COLDEST SUNSET</h3>
-				<span class="text-gray-500 text-sm">views {{ $article->counter }} times</span>
-		</div>
 
-		<div class="grid grid-cols-3 pt-10 gap-5">
+	<div class="bg-p-typo px-48">
+		<div class="grid gap-8">
+			<div class="my-12">
+				<div class="">
+					<h3 class="font-bold text-4xl f-ubuntu text-gray-100  mb-10 border-b-2 border-gray-700 py-5">{{ $category->name }}</h3>
 
-			<div class="col-span-2">
-				<div class="w-full rounded mb-3">
-					<div class="p-1 border-2 border-gray-700">
-				  		<img class="w-full" src="/img/{{ $article->image }}">
-					</div>
-				</div>
+					<div class="grid grid-cols-1 gap-6">
 
-				<div class="text-gray-300 f-ubuntu text-xl">
-						{!! $article->content !!}
-				</div>
+						@foreach($articles as $article)
 
-				<div class="text-gray-500 text-sm my-4">
-					<div class="mb-2">
-						<span class="mr-2"><i class="mr-2 fas fa-user"></i> {{ $article->user->name }}</span>
-						<span class="mr-2"><i class="mr-2 fas fa-calendar"></i> {{ date("d M Y", strtotime($article->created_at)) }}</span>
-					</div>
-					<div class="mb-2">
-						<span class="mr-2"><i class="mr-2 fas fa-tags"></i>
-							@foreach($article->tags as $tag)
-							<span>{{ $tag->name }}, </span>
-							@endforeach
-						</span>
-					</div>
-					<div class="mb-2">
-						<span class="mr-2"><i class="mr-2 fas fa-bookmark"></i>{{ $article->category->name }}</span>
-						<span class="mr-2"><i class="mr-2 fas fa-eye"></i>{{ $article->counter }}</span>
-					</div>
-				</div>
+							<div class="max-w-sm w-full lg:max-w-full lg:flex border-b-2 border-gray-700 pb-5">
+							  <div class="h-56 w-1/3 flex-none rounded bg-cover" style="background-image: url('/img/{{ $article->image }}')">
+							  </div>
+							  <div class="bg-transparent rounded-b lg:rounded-b-none lg:rounded-r pl-6 flex flex-col justify-between leading-normal">
+							    <div class="mb-4">
+							    	<div>
+								      <span class="text-md text-gray-200 font-bold">
+								        {{ $article->category->name }} -
+								      </span>
+								      <span class="text-gray-400 text-sm font-bold">{{ date("d M Y", strtotime($article->created_at)) }}</span>
 
-				<div class="bg-gray-200 text-black mt-6 px-6 pt-5">
-					<h6 class="border-b-4 border-black font-bold text-3xl mb-4">Comments</h6>
+							    	</div>
+							      <div class="text-gray-200 font-bold text-3xl mb-2 text-orange-500 hover:text-gray-100 inline-block cursor-pointer">
+							      	<a href="/article/{{ $article->slug }}">{{ $article->title }}</a>
+							      </div>
 
-						<div class="mb-8">
+							      <div style="">
+							      	<span class="text-gray-200 text-base text-gray-100 content-article">{!! Str::limit($article->content,200,'...') !!}</span>
+							      </div>
 
-							<form method="post" action="{{ route('postComment', $article->id) }}">
-								@csrf
-								<p>Leave a comment</p>
-
-								<div>
-
-									<div class="my-3">
-										<input type="text" name="name" placeholder="Name" class="w-full rounded shadow p-2">
-									</div>
-
-									<div class="my-3">
-										<textarea name="body" placeholder="Leave Your Comment" class="w-full rounded shadow p-2 h-32"></textarea>
-									</div>
-
-								</div>
-
-								<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-6">Send a Comment</button>
-							</form>
-
-						</div>
-
-
-					@foreach($comments as $comment)
-						<div class="border-t-2 border-gray-500 py-6">
-							<div class="grid grid-cols-7 gap-32 f-pts">
-								<div class="inline-block overflow-hidden" style="width: 120px; height: 120px;">
-									<img class="w-full" src="https://rpn.co.id/beta/wp-content/uploads/2018/11/unknown-user-6.png">
-								</div>
-								<div class="col-span-6">
-									<p class="font-bold text-xl">{{ $comment->name }}</p>
-									<p class="h-16">{{ $comment->body }}</p>
-									<p class="text-sm">{{ date('d M Y', strtotime($comment->created_at)) }}</p>
-								</div>
-
+							    </div>
+						    	<div class="text-gray-400 mb-4"><i class="fas fa-tags mr-2"></i>
+						    		@foreach($article->tags as $tag)
+						    			<span class="text-sm">{{ $tag->name }}, </span>
+						    		@endforeach
+						    	</div>
+							    {{-- <div class="flex items-center">
+							      <img class="w-10 h-10 rounded-full mr-4" src="https://lofrev.net/wp-content/photos/2017/03/user_blue_logo.png">
+							      <div class="text-sm">
+							        <p class="text-gray-300 leading-none mb-1">{{ $article->user->name }}</p>
+							        <p class="text-gray-500">{{ date("d M Y", strtotime($article->created_at)) }}</p>
+							      </div>
+							    </div> --}}
+							  </div>
 							</div>
-
-						</div>
-					@endforeach
-						<div class="border-t-2 border-gray-500 py-6">
-							<div class="grid grid-cols-7 gap-32 f-pts">
-								<div class="inline-block overflow-hidden" style="width: 120px; height: 120px;">
-									<img class="w-full" src="https://rpn.co.id/beta/wp-content/uploads/2018/11/unknown-user-6.png">
-								</div>
-								<div class="col-span-6">
-									<p class="font-bold text-xl">Admin</p>
-									<p class="h-16">its so good</p>
-									<p class="text-sm">{{ date("d M Y", strtotime($article->created_at)) }}</p>
-								</div>
-
-							</div>
-
-						</div>
-
-
-				</div>
-
-			</div>
-
-			<div>
-
-				<div class="px-5">
-					<h3 class="font-bold text-4xl text-white pb-4 border-b-2 border-gray-700 mb-3 border-b-2 border-gray-700 py-2">Category</h3>
-
-					{{-- <h4 class="font-bold text-4xl f-pts text-white  mb-10 border-b-2 border-gray-700 py-5">Top Category</h4> --}}
-					<div class="w-full f-pts rounded p-2">
-						<ul class="list-disc list-inside font-bold">
-							@foreach($categories as $category)
-								<li class="my-3 list-none">
-									<a href="/category/{{ $category->id }}" class=" cursor-pointer hover:text-gray-100 text-orange-500"><i class="fas fa-chevron-right text-xs align-baseline"> </i> {{ Str::upper($category->name) }}</a>
-								</li>
-							@endforeach
-						</ul>
-					</div>
-				</div>
-
-				<div class="px-5">
-					<h3 class="font-bold text-4xl text-white pb-4 border-b-2 border-gray-700 mb-5 border-b-2 border-gray-700 py-5">Related Article</h3>
-					<div class="w-full f-ubuntu grid grid-cols-1 gap-2 text-white">
-						@foreach($related as $related)
-
-						<div class="grid grid-cols-5 gap-4">
-							<div class="w-32 h-24 mr-2 col-span-2">
-								<img class="object-cover h-full" src="/img/{{ $related->image }}">
-							</div>
-							<div class="col-span-3">
-								<a href="/article/{{ $related->slug }}" class="cursor-pointer text-orange-500 hover:text-gray-100">{{ $related->title }}</a>
-							</div>
-						</div>
 
 						@endforeach
+
+						<div class="float-right text-gray-100">
+							{{ $articles->links() }}
+						</div>
 					</div>
+
+
 				</div>
-
-
 			</div>
 
 		</div>
+
 	</div>
 
 

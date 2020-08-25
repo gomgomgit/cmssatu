@@ -54,6 +54,6 @@ class CategoryPolicy
      */
     public function delete(User $user, Category $category)
     {
-        return !($user->role == 'author');
+        return !($user->role == 'author') && $category->id != 1;
     }
 }

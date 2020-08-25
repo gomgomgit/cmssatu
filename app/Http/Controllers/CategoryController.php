@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Article;
 use App\Model\Category;
 use Illuminate\Http\Request;
 
@@ -66,9 +67,15 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        $this->authorize('delete', $this->model);
+        $model = $this->model->find($id);
 
-        $this->model->find($id)->delete();
+        $this->authorize('delete', $model);
+
+        Article::where('category_id', $id)->update([
+            'category_id' => 1,
+        ]);
+
+        $model->delete();
         return redirect($this->redirect);
     }
 }

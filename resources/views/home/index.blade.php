@@ -96,10 +96,10 @@
 
 	</div>
 
-	<div class="h-48 border-b-4 border-t-4 border-orange-600 bg-gray-900">
+	<div class="h-56 border-b-4 border-t-4 border-orange-600 bg-gray-900">
 		<div class="px-48 py-8 grid grid-cols-4 gap-6 f-pts ">
-			<div class="flex justify-between">
-				<div class="h-16 w-16 text-gray-300 rounded-full pr-4">
+			<div class="flex justify-start">
+				<div class="h-16 w-16 text-gray-300 rounded-full mr-6">
 					<p class="font-bold text-5xl m-auto inline-block"><i class="fas fa-clock"></i></p>
 				</div>
 				<div>
@@ -107,8 +107,8 @@
 					<p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
 				</div>
 			</div>
-			<div class="flex justify-between">
-				<div class="h-16 w-16 text-gray-300 rounded-full pr-4">
+			<div class="flex justify-start">
+				<div class="h-16 w-16 text-gray-300 rounded-full mr-6">
 					<p class="font-bold text-5xl m-auto inline-block"><i class="fas fa-comments"></i></p>
 				</div>
 				<div>
@@ -116,8 +116,8 @@
 					<p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 				</div>
 			</div>
-			<div class="flex justify-between">
-				<div class="h-16 w-16 text-gray-300 rounded-full pr-4">
+			<div class="flex justify-start">
+				<div class="h-16 w-16 text-gray-300 rounded-full mr-6">
 					<p class="font-bold text-5xl m-auto inline-block"><i class="fas fa-bell"></i></p>
 				</div>
 				<div>
@@ -125,8 +125,8 @@
 					<p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
 				</div>
 			</div>
-			<div class="flex justify-between">
-				<div class="h-16 w-16 text-gray-300 rounded-full pr-4">
+			<div class="flex justify-start">
+				<div class="h-16 w-16 text-gray-300 rounded-full mr-6">
 					<p class="font-bold text-5xl m-auto inline-block"><i class="fas fa-hands-helping"></i></p>
 				</div>
 				<div>
@@ -241,7 +241,7 @@
 
 							@foreach($categories as $category)
 								<li class="my-3 list-none">
-									<a href="" class=" cursor-pointer hover:text-gray-100 text-orange-500"><i class="fas fa-chevron-right text-xs align-baseline"> </i> {{ Str::upper($category->name) }}</a>
+									<a href="/category/{{ $category->id }}" class=" cursor-pointer hover:text-gray-100 text-orange-500"><i class="fas fa-chevron-right text-xs align-baseline"> </i> {{ Str::upper($category->name) }}</a>
 								</li>
 							@endforeach
 						</ul>
@@ -309,7 +309,7 @@
 							<i class="fab fa-facebook text-4xl m-2"></i>
 							<i class="fab fa-twitter text-4xl m-2"></i>
 							<i class="fab fa-telegram text-4xl m-2"></i>
-							<p class="align-middle font-bold text-xl m-auto w-3/5 bg-gray-400">@SUP.WHAT</p>
+							<p class="align-middle font-bold text-xl m-auto w-3/5 text-gray-400">@SUP.WHAT</p>
 						</div>
 						<div>
 						</div>

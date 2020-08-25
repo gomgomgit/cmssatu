@@ -57,8 +57,11 @@
 		    height: 18px;
 		    width: 18px;
 		}
-		.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+		.owl-theme .owl-dots .owl-dot.active span {
 			background-color: #ed8936;
+		}
+		.owl-theme .owl-dots .owl-dot:hover span {
+			background-color: #ffaa44;
 		}
 		/*.pagination {
 			display: flex;
