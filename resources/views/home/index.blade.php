@@ -22,7 +22,7 @@
 </head>
 <body>
 	<nav class="bg-gray-900 border-b-4 border-orange-600 z-50">
-		<div class="flex items-center justify-between flex-wrap px-48">
+		<div class="flex items-center justify-between flex-wrap w-screen lg:max-w-6xl m-auto">
 			<div>
 			  <div class="flex items-center flex-shrink-0 text-gray-100 mr-6">
 			    <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
@@ -58,46 +58,50 @@
 
 
 
-	<div class="px-64 py-12 w-full bg-p-typo relative">
+	<div class="py-12 w-full bg-p-typo relative">
 
-		<div class="owl-theme top-0 z-10">
-		     <div class="owl-controls">
-		          <div id="customNav" class="owl-nav"></div>
-		     </div>
-		</div>
+		<div class="w-screen lg:max-w-6xl m-auto p-4">
+			<div class="owl-theme top-0 z-10">
+			     <div class="owl-controls">
+			          <div id="customNav" class="owl-nav"></div>
+			     </div>
+			</div>
 
-		<div class="owl-carousel owl-theme">
+			<div class="owl-carousel owl-theme">
 
-			@foreach($populars as $popular)
-				<div class="item w-full bg-cover z-30" style="background-image: url(/img/{{ $popular->image }}); height: 550px;">
-						<div class="pl-16 py-20 pr-64 z-40">
-							<h3 class="font-bold text-2xl text-orange-500 ">{{ $popular->category->name }}</h3>
-							<h2 class="font-extrabold text-6xl text-gray-200 f-pts w-50 leading-none">{{ Str::upper($popular->title) }}</h2>
+				@foreach($populars as $popular)
+					<div class="item w-full bg-cover z-30" style="background-image: url(/img/{{ $popular->image }}); height: 550px;">
+							<div class="pl-16 py-20 pr-64 z-40">
+								<h3 class="font-bold text-2xl text-orange-500 ">{{ $popular->category->name }}</h3>
+								<h2 class="font-extrabold text-6xl text-gray-200 f-pts w-50 leading-none">{{ Str::upper($popular->title) }}</h2>
 
-							<div class="mt-8">
-								<a href="/article/{{ $popular->slug }}" class="bg-transparent hover:bg-gray-200 text-gray-200 hover:text-gray-900 f-pts text-lg font-bold hover:text-gray-100 py-2 px-6 border border-gray-200 hover:border-transparent rounded">
-								  READ MORE
-								</a>
+								<div class="mt-8">
+									<a href="/article/{{ $popular->slug }}" class="bg-transparent hover:bg-gray-200 text-gray-200 hover:text-gray-900 f-pts text-lg font-bold hover:text-gray-100 py-2 px-6 border border-gray-200 hover:border-transparent rounded">
+									  READ MORE
+									</a>
+
+								</div>
 
 							</div>
+					</div>
+				@endforeach
 
+				<div class="item w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg); height: 550px;">
+						<div class="px-16 py-32">
+							<h2 class="font-extrabold text-6xl text-gray-200 f-pts">THE LAST DANCE</h2>
+							<h3 class="font-bold text-2xl text-gray-300">CHICAGO BULLS -- 1988</h3>
 						</div>
 				</div>
-			@endforeach
 
-			<div class="item w-full bg-cover" style="background-image: url(https://i.pinimg.com/originals/87/08/39/87083943e97792b46b0d8194243af949.jpg); height: 550px;">
-					<div class="px-16 py-32">
-						<h2 class="font-extrabold text-6xl text-gray-200 f-pts">THE LAST DANCE</h2>
-						<h3 class="font-bold text-2xl text-gray-300">CHICAGO BULLS -- 1988</h3>
-					</div>
 			</div>
 
 		</div>
 
+
 	</div>
 
 	<div class="h-56 border-b-4 border-t-4 border-orange-600 bg-gray-900">
-		<div class="px-48 py-8 grid grid-cols-4 gap-6 f-pts ">
+		<div class="w-screen lg:max-w-6xl m-auto py-8 grid grid-cols-4 gap-6 f-pts p-4">
 			<div class="flex justify-start">
 				<div class="h-16 w-16 text-gray-300 rounded-full mr-6">
 					<p class="font-bold text-5xl m-auto inline-block"><i class="fas fa-clock"></i></p>
@@ -139,7 +143,8 @@
 	</div>
 
 
-	<div class="px-48 bg-p-typo">
+	<div class="bg-p-typo">
+		<div class="w-screen lg:max-w-6xl m-auto p-4">
 		<h3 class="font-bold text-4xl f-ubuntu text-gray-100 mb-10 border-b-2 border-gray-700 py-5">Update</h3>
 
 		<div class="grid grid-cols-4 grid-flow-col gap-4">
@@ -250,11 +255,13 @@
 			</div>
 		</div>
 
+		</div>
+
 
 	</div>
 
-	<footer class="border-t-4 border-orange-600 bg-gray-900 px-48 py-12">
-		<div class="grid grid-cols-9">
+	<footer class="border-t-4 border-orange-600 bg-gray-900 py-12">
+		<div class="grid grid-cols-9 w-screen lg:max-w-6xl m-auto p-4">
 			<div class="col-span-2">
 				<h5 class="text-2xl font-bold text-gray-100 mb-3">NEWS</h5>
 				<span class="text-gray-400 font-bold ">
